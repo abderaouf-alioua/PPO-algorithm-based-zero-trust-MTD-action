@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #1a1a1a;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#4a90e2", "font": {"color": "white"}, "id": 1, "label": "SDP Gateway\n192.168.1.1", "shape": "ellipse", "size": 40, "title": "Gateway ID: 1\u003cbr\u003eIP: 192.168.1.1\u003cbr\u003eServices: 10"}, {"color": "#e74c3c", "font": {"color": "white"}, "id": "seg_1", "label": "Micro-Segment\n1\nPerimeter_Main", "shape": "box", "size": 35, "title": "Segment: 1\u003cbr\u003ePerimeter: Perimeter_Main\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eServices: 10\u003cbr\u003eUsers: 25"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_1", "label": "Container\nMicroService_1\nCPU: 0.3%\nMem: 0.5%\nUsers: 3", "shape": "box", "size": 25, "title": "Service: MicroService_1\u003cbr\u003eID: 1\u003cbr\u003eIP: 192.168.1.101\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 3\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_2", "label": "Container\nMicroService_2\nCPU: 0.3%\nMem: 0.5%\nUsers: 3", "shape": "box", "size": 25, "title": "Service: MicroService_2\u003cbr\u003eID: 2\u003cbr\u003eIP: 192.168.1.102\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 3\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_3", "label": "Container\nMicroService_3\nCPU: 0.3%\nMem: 0.5%\nUsers: 3", "shape": "box", "size": 25, "title": "Service: MicroService_3\u003cbr\u003eID: 3\u003cbr\u003eIP: 192.168.1.103\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 3\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_4", "label": "Container\nMicroService_4\nCPU: 0.3%\nMem: 0.5%\nUsers: 3", "shape": "box", "size": 25, "title": "Service: MicroService_4\u003cbr\u003eID: 4\u003cbr\u003eIP: 192.168.1.104\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 3\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_5", "label": "Container\nMicroService_5\nCPU: 0.3%\nMem: 0.5%\nUsers: 3", "shape": "box", "size": 25, "title": "Service: MicroService_5\u003cbr\u003eID: 5\u003cbr\u003eIP: 192.168.1.105\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 3\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_6", "label": "Container\nMicroService_6\nCPU: 0.3%\nMem: 0.5%\nUsers: 2", "shape": "box", "size": 25, "title": "Service: MicroService_6\u003cbr\u003eID: 6\u003cbr\u003eIP: 192.168.1.106\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 2\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_7", "label": "Container\nMicroService_7\nCPU: 0.3%\nMem: 0.5%\nUsers: 2", "shape": "box", "size": 25, "title": "Service: MicroService_7\u003cbr\u003eID: 7\u003cbr\u003eIP: 192.168.1.107\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 2\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_8", "label": "Container\nMicroService_8\nCPU: 0.3%\nMem: 0.5%\nUsers: 2", "shape": "box", "size": 25, "title": "Service: MicroService_8\u003cbr\u003eID: 8\u003cbr\u003eIP: 192.168.1.108\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 2\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_9", "label": "Container\nMicroService_9\nCPU: 0.3%\nMem: 0.5%\nUsers: 2", "shape": "box", "size": 25, "title": "Service: MicroService_9\u003cbr\u003eID: 9\u003cbr\u003eIP: 192.168.1.109\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 2\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#00b894", "font": {"color": "white"}, "id": "service_10", "label": "Container\nMicroService_10\nCPU: 0.3%\nMem: 0.5%\nUsers: 2", "shape": "box", "size": 25, "title": "Service: MicroService_10\u003cbr\u003eID: 10\u003cbr\u003eIP: 192.168.1.110\u003cbr\u003eActive: True\u003cbr\u003eIsolated: False\u003cbr\u003eUsers: 2\u003cbr\u003eCPU: 0.3%\u003cbr\u003eMemory: 0.5%\u003cbr\u003eLatency: 40.0ms"}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_1", "label": "User_1", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_11", "label": "User_11", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_21", "label": "User_21", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_2", "label": "User_2", "shape": "dot", "size": 15}, {"color": "#9b59b6", "font": {"color": "white"}, "id": "user_12", "label": "User_12", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_22", "label": "User_22", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_3", "label": "User_3", "shape": "dot", "size": 15}, {"color": "#9b59b6", "font": {"color": "white"}, "id": "user_13", "label": "User_13", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_23", "label": "User_23", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_4", "label": "User_4", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_14", "label": "User_14", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_24", "label": "User_24", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_5", "label": "User_5", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_15", "label": "User_15", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_25", "label": "User_25", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_6", "label": "User_6", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_16", "label": "User_16", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_7", "label": "User_7", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_17", "label": "User_17", "shape": "dot", "size": 15}, {"color": "#16a085", "font": {"color": "white"}, "id": "user_8", "label": "User_8", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_18", "label": "User_18", "shape": "dot", "size": 15}, {"color": "#9b59b6", "font": {"color": "white"}, "id": "user_9", "label": "User_9", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_19", "label": "User_19", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_10", "label": "User_10", "shape": "dot", "size": 15}, {"color": "#34495e", "font": {"color": "white"}, "id": "user_20", "label": "User_20", "shape": "dot", "size": 15}]);
+                  edges = new vis.DataSet([{"color": "#666666", "from": 1, "to": "seg_1", "width": 3}, {"color": "#999999", "from": "seg_1", "to": "service_1", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_2", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_3", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_4", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_5", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_6", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_7", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_8", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_9", "width": 2}, {"color": "#999999", "from": "seg_1", "to": "service_10", "width": 2}, {"color": "#00ff00", "from": "service_1", "to": "user_1", "width": 1}, {"color": "#00ff00", "from": "service_1", "to": "user_11", "width": 1}, {"color": "#00ff00", "from": "service_1", "to": "user_21", "width": 1}, {"color": "#00ff00", "from": "service_2", "to": "user_2", "width": 1}, {"color": "#00ff00", "from": "service_2", "to": "user_12", "width": 1}, {"color": "#00ff00", "from": "service_2", "to": "user_22", "width": 1}, {"color": "#00ff00", "from": "service_3", "to": "user_3", "width": 1}, {"color": "#00ff00", "from": "service_3", "to": "user_13", "width": 1}, {"color": "#00ff00", "from": "service_3", "to": "user_23", "width": 1}, {"color": "#00ff00", "from": "service_4", "to": "user_4", "width": 1}, {"color": "#00ff00", "from": "service_4", "to": "user_14", "width": 1}, {"color": "#00ff00", "from": "service_4", "to": "user_24", "width": 1}, {"color": "#00ff00", "from": "service_5", "to": "user_5", "width": 1}, {"color": "#00ff00", "from": "service_5", "to": "user_15", "width": 1}, {"color": "#00ff00", "from": "service_5", "to": "user_25", "width": 1}, {"color": "#00ff00", "from": "service_6", "to": "user_6", "width": 1}, {"color": "#00ff00", "from": "service_6", "to": "user_16", "width": 1}, {"color": "#00ff00", "from": "service_7", "to": "user_7", "width": 1}, {"color": "#00ff00", "from": "service_7", "to": "user_17", "width": 1}, {"color": "#00ff00", "from": "service_8", "to": "user_8", "width": 1}, {"color": "#00ff00", "from": "service_8", "to": "user_18", "width": 1}, {"color": "#00ff00", "from": "service_9", "to": "user_9", "width": 1}, {"color": "#00ff00", "from": "service_9", "to": "user_19", "width": 1}, {"color": "#00ff00", "from": "service_10", "to": "user_10", "width": 1}, {"color": "#00ff00", "from": "service_10", "to": "user_20", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"physics": {"enabled": true, "stabilization": {"iterations": 100}, "barnesHut": {"gravitationalConstant": -2000, "centralGravity": 0.3, "springLength": 95, "springConstant": 0.04, "damping": 0.09, "avoidOverlap": 0.1}}, "nodes": {"font": {"size": 14, "color": "white"}, "borderWidth": 2, "shadow": true}, "edges": {"color": {"inherit": "from"}, "width": 2, "shadow": true, "smooth": {"type": "continuous"}}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

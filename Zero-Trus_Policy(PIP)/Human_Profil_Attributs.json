@@ -1,0 +1,621 @@
+{
+  "framework": {
+    "name": "Human_Profile_Attribute_Scores",
+    "description": "Comprehensive framework evaluates the security posture of communication channels and human factors in cloud-native environments",
+    "attributes": {
+      "human_social_behavioral_profile": {
+        "weight": 0.15,
+        "profiles": [
+          {
+            "id": "HSBP-01",
+            "scenario": "Private Professional",
+            "trust_score": 1.00,
+            "description": "Minimal social media, stable relationships, conservative lifestyle",
+            "social_media_activity": "Minimal/Professional",
+            "personal_relationships": "Long-term Stable",
+            "lifestyle_pattern": "Conservative"
+          },
+          {
+            "id": "HSBP-02",
+            "scenario": "Balanced Social Professional",
+            "trust_score": 0.98,
+            "description": "Moderate social sharing, strong family ties, disciplined lifestyle",
+            "social_media_activity": "Moderate/Filtered",
+            "personal_relationships": "Family-Oriented",
+            "lifestyle_pattern": "Balanced"
+          },
+          {
+            "id": "HSBP-03",
+            "scenario": "Community Leader Active",
+            "trust_score": 0.96,
+            "description": "Active in professional communities, mentors others, well-respected",
+            "social_media_activity": "Professional Networks",
+            "personal_relationships": "Community Focused",
+            "lifestyle_pattern": "Leadership"
+          },
+          {
+            "id": "HSBP-04",
+            "scenario": "Social Networker Careful",
+            "trust_score": 0.94,
+            "description": "Active social presence but privacy-conscious, diverse friend groups",
+            "social_media_activity": "Active/Privacy-Aware",
+            "personal_relationships": "Diverse Network",
+            "lifestyle_pattern": "Social but Careful"
+          },
+          {
+            "id": "HSBP-05",
+            "scenario": "Young Professional Social",
+            "trust_score": 0.92,
+            "description": "Active social life, dating, career-focused with social balance",
+            "social_media_activity": "Regular Posts",
+            "personal_relationships": "Dating/Friend Groups",
+            "lifestyle_pattern": "Active Social"
+          },
+          {
+            "id": "HSBP-06",
+            "scenario": "Sports Enthusiast Open",
+            "trust_score": 0.88,
+            "description": "Sports-focused social life, team activities, shares achievements",
+            "social_media_activity": "Sports/Fitness Focused",
+            "personal_relationships": "Team-Based",
+            "lifestyle_pattern": "Athletic/Competitive"
+          },
+          {
+            "id": "HSBP-07",
+            "scenario": "Creative Expressive",
+            "trust_score": 0.85,
+            "description": "Artistic pursuits, creative communities, expressive online presence",
+            "social_media_activity": "Creative Content",
+            "personal_relationships": "Artist Networks",
+            "lifestyle_pattern": "Creative/Bohemian"
+          },
+          {
+            "id": "HSBP-08",
+            "scenario": "Social Media Influencer",
+            "trust_score": 0.82,
+            "description": "Large following, brand partnerships, public persona management",
+            "social_media_activity": "High Visibility",
+            "personal_relationships": "Public Relationships",
+            "lifestyle_pattern": "Influencer Lifestyle"
+          },
+          {
+            "id": "HSBP-09",
+            "scenario": "Party Social Butterfly",
+            "trust_score": 0.78,
+            "description": "Frequent social events, nightlife active, shares party experiences",
+            "social_media_activity": "Party/Event Posts",
+            "personal_relationships": "Large Social Circle",
+            "lifestyle_pattern": "Party-Focused"
+          },
+          {
+            "id": "HSBP-10",
+            "scenario": "Digital Native Oversharer",
+            "trust_score": 0.74,
+            "description": "Shares daily activities, location check-ins, personal details",
+            "social_media_activity": "Constant Updates",
+            "personal_relationships": "Online-First",
+            "lifestyle_pattern": "Digital-Dependent"
+          },
+          {
+            "id": "HSBP-11",
+            "scenario": "Relationship Drama Prone",
+            "trust_score": 0.70,
+            "description": "Frequent relationship changes, emotional social posts, conflicts",
+            "social_media_activity": "Personal Drama",
+            "personal_relationships": "Unstable Relationships",
+            "lifestyle_pattern": "Emotional Volatility"
+          },
+          {
+            "id": "HSBP-12",
+            "scenario": "Controversial Opinion Sharer",
+            "trust_score": 0.65,
+            "description": "Shares political/controversial views, engages in online debates",
+            "social_media_activity": "Political/Controversial",
+            "personal_relationships": "Polarized Network",
+            "lifestyle_pattern": "Confrontational"
+          },
+          {
+            "id": "HSBP-13",
+            "scenario": "Gambling Social Circles",
+            "trust_score": 0.60,
+            "description": "Associates with gambling communities, financial risk-taking behavior",
+            "social_media_activity": "Gaming/Betting Content",
+            "personal_relationships": "High-Risk Associations",
+            "lifestyle_pattern": "Risk-Taking"
+          },
+          {
+            "id": "HSBP-14",
+            "scenario": "Substance Use Indicators",
+            "trust_score": 0.50,
+            "description": "Social posts suggest substance use, party-heavy lifestyle, risky behavior",
+            "social_media_activity": "Party/Substance Hints",
+            "personal_relationships": "Risky Associations",
+            "lifestyle_pattern": "Hedonistic"
+          },
+          {
+            "id": "HSBP-15",
+            "scenario": "Criminal Association History",
+            "trust_score": 0.30,
+            "description": "Associates with known criminals, suspicious social connections",
+            "social_media_activity": "Suspicious Networks",
+            "personal_relationships": "Criminal Connections",
+            "lifestyle_pattern": "Underground Activity"
+          },
+          {
+            "id": "HSBP-16",
+            "scenario": "Foreign Intelligence Contacts",
+            "trust_score": 0.15,
+            "description": "Unexplained foreign contacts, suspicious travel, financial anomalies",
+            "social_media_activity": "Foreign Influence",
+            "personal_relationships": "Suspicious Foreign Ties",
+            "lifestyle_pattern": "Unexplained Patterns"
+          },
+          {
+            "id": "HSBP-17",
+            "scenario": "Blackmail/Coercion Vulnerable",
+            "trust_score": 0.05,
+            "description": "Compromising social behavior, exploitation potential, under pressure",
+            "social_media_activity": "Compromising Content",
+            "personal_relationships": "Exploitative Relationships",
+            "lifestyle_pattern": "Vulnerable"
+          }
+        ]
+      },
+      "technical_security_awareness": {
+        "weight": 0.20,
+        "profiles": [
+          {
+            "id": "TSA-01",
+            "scenario": "Security Expert",
+            "trust_score": 1.00,
+            "description": "Deep security knowledge, follows best practices, educates others",
+            "password_hygiene": "Excellent",
+            "mfa_adoption": "Universal",
+            "phishing_resistance": "Expert Level",
+            "device_security": "Hardened"
+          },
+          {
+            "id": "TSA-02",
+            "scenario": "IT Professional Aware",
+            "trust_score": 0.95,
+            "description": "Strong technical background, security-conscious, mostly compliant",
+            "password_hygiene": "Very Good",
+            "mfa_adoption": "Widespread",
+            "phishing_resistance": "High",
+            "device_security": "Well Configured"
+          },
+          {
+            "id": "TSA-03",
+            "scenario": "Security Conscious User",
+            "trust_score": 0.88,
+            "description": "Actively learns about security, follows most recommendations",
+            "password_hygiene": "Good",
+            "mfa_adoption": "Most Accounts",
+            "phishing_resistance": "Good",
+            "device_security": "Basic Hardening"
+          },
+          {
+            "id": "TSA-04",
+            "scenario": "Compliant Employee",
+            "trust_score": 0.82,
+            "description": "Follows company policies, attends training, reasonably careful",
+            "password_hygiene": "Adequate",
+            "mfa_adoption": "Work Accounts",
+            "phishing_resistance": "Moderate",
+            "device_security": "Standard Config"
+          },
+          {
+            "id": "TSA-05",
+            "scenario": "Average Consumer",
+            "trust_score": 0.75,
+            "description": "Basic security practices, relies on defaults, occasional lapses",
+            "password_hygiene": "Mixed",
+            "mfa_adoption": "Some Accounts",
+            "phishing_resistance": "Basic",
+            "device_security": "Default Settings"
+          },
+          {
+            "id": "TSA-06",
+            "scenario": "Convenience Prioritizer",
+            "trust_score": 0.65,
+            "description": "Values convenience over security, minimal effort compliance",
+            "password_hygiene": "Weak",
+            "mfa_adoption": "Forced Only",
+            "phishing_resistance": "Low",
+            "device_security": "Minimal"
+          },
+          {
+            "id": "TSA-07",
+            "scenario": "Technology Resistant",
+            "trust_score": 0.50,
+            "description": "Struggles with technology, avoids security measures, vulnerable",
+            "password_hygiene": "Poor",
+            "mfa_adoption": "Rare",
+            "phishing_resistance": "Very Low",
+            "device_security": "Insecure"
+          },
+          {
+            "id": "TSA-08",
+            "scenario": "Security Hostile",
+            "trust_score": 0.25,
+            "description": "Actively circumvents security, sees it as hindrance, high risk",
+            "password_hygiene": "Terrible",
+            "mfa_adoption": "Avoided",
+            "phishing_resistance": "None",
+            "device_security": "Compromised"
+          }
+        ]
+      },
+      "financial_stability_indicators": {
+        "weight": 0.15,
+        "profiles": [
+          {
+            "id": "FSI-01",
+            "scenario": "Financially Secure",
+            "trust_score": 1.00,
+            "description": "Stable income, good credit, emergency funds, conservative spending",
+            "debt_to_income": "Low",
+            "credit_score": "Excellent",
+            "spending_patterns": "Conservative",
+            "financial_stress": "None"
+          },
+          {
+            "id": "FSI-02",
+            "scenario": "Well Managed Finances",
+            "trust_score": 0.92,
+            "description": "Good budgeting, manageable debt, building wealth, planned purchases",
+            "debt_to_income": "Moderate",
+            "credit_score": "Good",
+            "spending_patterns": "Planned",
+            "financial_stress": "Low"
+          },
+          {
+            "id": "FSI-03",
+            "scenario": "Average Financial Health",
+            "trust_score": 0.80,
+            "description": "Living paycheck to paycheck but stable, some debt, limited savings",
+            "debt_to_income": "Moderate-High",
+            "credit_score": "Fair",
+            "spending_patterns": "Mixed",
+            "financial_stress": "Moderate"
+          },
+          {
+            "id": "FSI-04",
+            "scenario": "Financial Pressure",
+            "trust_score": 0.65,
+            "description": "Struggling with bills, high debt, frequent financial worry, stressed",
+            "debt_to_income": "High",
+            "credit_score": "Poor",
+            "spending_patterns": "Impulsive",
+            "financial_stress": "High"
+          },
+          {
+            "id": "FSI-05",
+            "scenario": "Financial Desperation",
+            "trust_score": 0.40,
+            "description": "Severe financial distress, bankruptcy risk, seeking quick money",
+            "debt_to_income": "Excessive",
+            "credit_score": "Very Poor",
+            "spending_patterns": "Desperate",
+            "financial_stress": "Extreme"
+          },
+          {
+            "id": "FSI-06",
+            "scenario": "Suspicious Wealth",
+            "trust_score": 0.30,
+            "description": "Unexplained income sources, lifestyle doesn't match known income",
+            "debt_to_income": "Unknown",
+            "credit_score": "Unclear",
+            "spending_patterns": "Unexplained",
+            "financial_stress": "Hidden"
+          }
+        ]
+      },
+      "professional_reputation": {
+        "weight": 0.15,
+        "profiles": [
+          {
+            "id": "PR-01",
+            "scenario": "Industry Leader",
+            "trust_score": 1.00,
+            "description": "Recognized expert, spotless reputation, mentor to others",
+            "career_trajectory": "Excellent",
+            "peer_respect": "High",
+            "ethical_record": "Exemplary",
+            "professional_network": "Prestigious"
+          },
+          {
+            "id": "PR-02",
+            "scenario": "Respected Professional",
+            "trust_score": 0.92,
+            "description": "Strong reputation, steady career growth, well-regarded by peers",
+            "career_trajectory": "Good",
+            "peer_respect": "High",
+            "ethical_record": "Good",
+            "professional_network": "Strong"
+          },
+          {
+            "id": "PR-03",
+            "scenario": "Competent Employee",
+            "trust_score": 0.85,
+            "description": "Reliable performer, meets expectations, good team member",
+            "career_trajectory": "Steady",
+            "peer_respect": "Moderate",
+            "ethical_record": "Clean",
+            "professional_network": "Adequate"
+          },
+          {
+            "id": "PR-04",
+            "scenario": "Job Hopper",
+            "trust_score": 0.70,
+            "description": "Frequent job changes, inconsistent performance, mixed references",
+            "career_trajectory": "Unstable",
+            "peer_respect": "Mixed",
+            "ethical_record": "Questionable",
+            "professional_network": "Limited"
+          },
+          {
+            "id": "PR-05",
+            "scenario": "Performance Issues",
+            "trust_score": 0.55,
+            "description": "Below average performance, disciplinary actions, poor references",
+            "career_trajectory": "Declining",
+            "peer_respect": "Low",
+            "ethical_record": "Problems",
+            "professional_network": "Weak"
+          },
+          {
+            "id": "PR-06",
+            "scenario": "Professional Misconduct",
+            "trust_score": 0.25,
+            "description": "Ethics violations, terminated for cause, industry reputation damaged",
+            "career_trajectory": "Damaged",
+            "peer_respect": "None",
+            "ethical_record": "Violated",
+            "professional_network": "Burned"
+          }
+        ]
+      },
+      "communication_security_habits": {
+        "weight": 0.10,
+        "profiles": [
+          {
+            "id": "CSH-01",
+            "scenario": "Security-First Communicator",
+            "trust_score": 1.00,
+            "description": "Uses encrypted channels, verifies contacts, cautious with information",
+            "encryption_usage": "Always",
+            "channel_selection": "Secure Only",
+            "information_sharing": "Minimal/Verified",
+            "contact_verification": "Strict"
+          },
+          {
+            "id": "CSH-02",
+            "scenario": "Privacy Conscious",
+            "trust_score": 0.88,
+            "description": "Generally secure practices, thinks before sharing, uses privacy settings",
+            "encryption_usage": "Frequent",
+            "channel_selection": "Mostly Secure",
+            "information_sharing": "Cautious",
+            "contact_verification": "Good"
+          },
+          {
+            "id": "CSH-03",
+            "scenario": "Standard User",
+            "trust_score": 0.75,
+            "description": "Uses default settings, basic privacy awareness, occasional oversharing",
+            "encryption_usage": "Default",
+            "channel_selection": "Convenient",
+            "information_sharing": "Mixed",
+            "contact_verification": "Basic"
+          },
+          {
+            "id": "CSH-04",
+            "scenario": "Open Communicator",
+            "trust_score": 0.60,
+            "description": "Shares freely, trusts easily, minimal privacy controls",
+            "encryption_usage": "Rare",
+            "channel_selection": "Popular Apps",
+            "information_sharing": "Open",
+            "contact_verification": "Minimal"
+          },
+          {
+            "id": "CSH-05",
+            "scenario": "Insecure Communicator",
+            "trust_score": 0.35,
+            "description": "No security considerations, overshares sensitive info, accepts all contacts",
+            "encryption_usage": "None",
+            "channel_selection": "Any Available",
+            "information_sharing": "Excessive",
+            "contact_verification": "None"
+          }
+        ]
+      },
+      "travel_exposure_patterns": {
+        "weight": 0.08,
+        "profiles": [
+          {
+            "id": "TEP-01",
+            "scenario": "Domestic Only",
+            "trust_score": 1.00,
+            "description": "Minimal travel, domestic only, predictable patterns",
+            "travel_frequency": "Rare",
+            "destination_risk": "Low",
+            "travel_purpose": "Personal/Business",
+            "security_awareness": "Standard"
+          },
+          {
+            "id": "TEP-02",
+            "scenario": "Safe International Traveler",
+            "trust_score": 0.90,
+            "description": "Travels to low-risk countries, security-conscious, proper precautions",
+            "travel_frequency": "Moderate",
+            "destination_risk": "Low",
+            "travel_purpose": "Business/Tourism",
+            "security_awareness": "High"
+          },
+          {
+            "id": "TEP-03",
+            "scenario": "Business Traveler",
+            "trust_score": 0.82,
+            "description": "Regular business travel, follows company protocols, mixed destinations",
+            "travel_frequency": "Regular",
+            "destination_risk": "Mixed",
+            "travel_purpose": "Business",
+            "security_awareness": "Corporate Standard"
+          },
+          {
+            "id": "TEP-04",
+            "scenario": "Adventure Traveler",
+            "trust_score": 0.70,
+            "description": "Seeks unusual destinations, risk-tolerant, some high-risk locations",
+            "travel_frequency": "High",
+            "destination_risk": "Moderate-High",
+            "travel_purpose": "Adventure/Personal",
+            "security_awareness": "Variable"
+          },
+          {
+            "id": "TEP-05",
+            "scenario": "High-Risk Traveler",
+            "trust_score": 0.45,
+            "description": "Frequent travel to high-risk countries, minimal security precautions",
+            "travel_frequency": "Very High",
+            "destination_risk": "High",
+            "travel_purpose": "Various",
+            "security_awareness": "Low"
+          },
+          {
+            "id": "TEP-06",
+            "scenario": "Suspicious Travel Patterns",
+            "trust_score": 0.20,
+            "description": "Unexplained travel, high-risk destinations, suspicious timing",
+            "travel_frequency": "Irregular",
+            "destination_risk": "Very High",
+            "travel_purpose": "Unclear",
+            "security_awareness": "Suspicious"
+          }
+        ]
+      },
+      "digital_footprint_exposure": {
+        "weight": 0.12,
+        "profiles": [
+          {
+            "id": "DFE-01",
+            "scenario": "Minimal Digital Presence",
+            "trust_score": 1.00,
+            "description": "Limited online presence, privacy-focused, hard to research",
+            "search_visibility": "Low",
+            "data_broker_presence": "Minimal",
+            "social_discoverability": "Limited",
+            "professional_visibility": "Controlled"
+          },
+          {
+            "id": "DFE-02",
+            "scenario": "Professional Online Presence",
+            "trust_score": 0.88,
+            "description": "Curated professional presence, privacy settings enabled, thoughtful sharing",
+            "search_visibility": "Professional Only",
+            "data_broker_presence": "Limited",
+            "social_discoverability": "Filtered",
+            "professional_visibility": "Strong"
+          },
+          {
+            "id": "DFE-03",
+            "scenario": "Balanced Visibility",
+            "trust_score": 0.75,
+            "description": "Mix of professional and personal content, moderate privacy controls",
+            "search_visibility": "Moderate",
+            "data_broker_presence": "Standard",
+            "social_discoverability": "Open",
+            "professional_visibility": "Visible"
+          },
+          {
+            "id": "DFE-04",
+            "scenario": "High Social Visibility",
+            "trust_score": 0.65,
+            "description": "Very active online, shares personal details, easily discoverable",
+            "search_visibility": "High",
+            "data_broker_presence": "Extensive",
+            "social_discoverability": "Very Open",
+            "professional_visibility": "Public"
+          },
+          {
+            "id": "DFE-05",
+            "scenario": "Digital Oversharer",
+            "trust_score": 0.45,
+            "description": "Extensive personal information online, no privacy controls, vulnerable to OSINT",
+            "search_visibility": "Excessive",
+            "data_broker_presence": "Comprehensive",
+            "social_discoverability": "Completely Open",
+            "professional_visibility": "Unfiltered"
+          },
+          {
+            "id": "DFE-06",
+            "scenario": "Compromised Digital Identity",
+            "trust_score": 0.20,
+            "description": "Data breaches, identity theft, conflicting information, security incidents",
+            "search_visibility": "Problematic",
+            "data_broker_presence": "Corrupted",
+            "social_discoverability": "Compromised",
+            "professional_visibility": "Damaged"
+          }
+        ]
+      },
+      "stress_resilience_factors": {
+        "weight": 0.05,
+        "profiles": [
+          {
+            "id": "SRF-01",
+            "scenario": "Highly Resilient",
+            "trust_score": 1.00,
+            "description": "Excellent stress management, stable under pressure, good support system",
+            "stress_tolerance": "Excellent",
+            "coping_mechanisms": "Healthy",
+            "support_system": "Strong",
+            "decision_making": "Rational"
+          },
+          {
+            "id": "SRF-02",
+            "scenario": "Good Resilience",
+            "trust_score": 0.85,
+            "description": "Generally handles stress well, occasional struggles, seeks help when needed",
+            "stress_tolerance": "Good",
+            "coping_mechanisms": "Mostly Healthy",
+            "support_system": "Adequate",
+            "decision_making": "Generally Good"
+          },
+          {
+            "id": "SRF-03",
+            "scenario": "Moderate Resilience",
+            "trust_score": 0.70,
+            "description": "Mixed stress response, some unhealthy coping, inconsistent performance",
+            "stress_tolerance": "Moderate",
+            "coping_mechanisms": "Mixed",
+            "support_system": "Limited",
+            "decision_making": "Variable"
+          },
+          {
+            "id": "SRF-04",
+            "scenario": "Low Resilience",
+            "trust_score": 0.50,
+            "description": "Poor stress management, unhealthy coping mechanisms, easily overwhelmed",
+            "stress_tolerance": "Low",
+            "coping_mechanisms": "Unhealthy",
+            "support_system": "Weak",
+            "decision_making": "Impaired"
+          },
+          {
+            "id": "SRF-05",
+            "scenario": "Crisis Vulnerable",
+            "trust_score": 0.25,
+            "description": "Breaks down under pressure, destructive coping, isolated, poor judgment",
+            "stress_tolerance": "Very Low",
+            "coping_mechanisms": "Destructive",
+            "support_system": "None",
+            "decision_making": "Very Poor"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1602 @@
+{
+  "framework": {
+    "metadata": {
+      "title": "Zero Trust User Attributes Framework",
+      "version": "1.0",
+      "total_weight": 0.96,
+      "reserved_weight": 0.04
+    },
+    "attributes": {
+      "authentication_factors": {
+        "code": "AF",
+        "weight": 0.15,
+        "description": "Authentication Methods and Security Levels",
+        "scenarios": [
+          {
+            "id": "AF-01",
+            "authentication_method": "Multi-Factor + Biometric",
+            "trust_score": 1.00,
+            "description": "Password + Face ID + Hardware Token",
+            "factor_type": "Multi-Modal",
+            "security_level": "Maximum Security",
+            "zero_trust_assessment": "Fully Trusted"
+          },
+          {
+            "id": "AF-02",
+            "authentication_method": "Biometric + Hardware Token",
+            "trust_score": 0.98,
+            "description": "Face ID + Hardware Security Key",
+            "factor_type": "Dual-Factor",
+            "security_level": "Very High Security",
+            "zero_trust_assessment": "Fully Trusted"
+          },
+          {
+            "id": "AF-03",
+            "authentication_method": "Password + Face ID + SMS",
+            "trust_score": 0.96,
+            "description": "Triple factor authentication",
+            "factor_type": "Multi-Factor",
+            "security_level": "Very High Security",
+            "zero_trust_assessment": "Trusted"
+          },
+          {
+            "id": "AF-04",
+            "authentication_method": "Password + Hardware Token",
+            "trust_score": 0.94,
+            "description": "Traditional 2FA with hardware",
+            "factor_type": "Dual-Factor",
+            "security_level": "High Security",
+            "zero_trust_assessment": "Trusted"
+          },
+          {
+            "id": "AF-05",
+            "authentication_method": "Face ID + PIN",
+            "trust_score": 0.92,
+            "description": "Biometric with backup PIN",
+            "factor_type": "Biometric-PIN",
+            "security_level": "High Security",
+            "zero_trust_assessment": "Trusted"
+          },
+          {
+            "id": "AF-06",
+            "authentication_method": "Password + Authenticator App",
+            "trust_score": 0.90,
+            "description": "TOTP-based 2FA",
+            "factor_type": "App-Based",
+            "security_level": "High Security",
+            "zero_trust_assessment": "Trusted"
+          },
+          {
+            "id": "AF-07",
+            "authentication_method": "Face ID Only",
+            "trust_score": 0.85,
+            "description": "Single biometric factor",
+            "factor_type": "Single Biometric",
+            "security_level": "Medium-High Security",
+            "zero_trust_assessment": "Acceptable"
+          },
+          {
+            "id": "AF-08",
+            "authentication_method": "Password + SMS",
+            "trust_score": 0.82,
+            "description": "SMS-based 2FA",
+            "factor_type": "SMS-Based",
+            "security_level": "Medium-High Security",
+            "zero_trust_assessment": "Acceptable"
+          },
+          {
+            "id": "AF-09",
+            "authentication_method": "Fingerprint Only",
+            "trust_score": 0.80,
+            "description": "Fingerprint authentication",
+            "factor_type": "Single Biometric",
+            "security_level": "Medium Security",
+            "zero_trust_assessment": "Acceptable"
+          },
+          {
+            "id": "AF-10",
+            "authentication_method": "Strong Password Only",
+            "trust_score": 0.75,
+            "description": "Complex password meeting policy",
+            "factor_type": "Single Factor",
+            "security_level": "Medium Security",
+            "zero_trust_assessment": "Monitor"
+          },
+          {
+            "id": "AF-11",
+            "authentication_method": "Password + Email Verification",
+            "trust_score": 0.70,
+            "description": "Email-based second factor",
+            "factor_type": "Email-Based",
+            "security_level": "Medium Security",
+            "zero_trust_assessment": "Monitor"
+          },
+          {
+            "id": "AF-12",
+            "authentication_method": "PIN + Security Questions",
+            "trust_score": 0.68,
+            "description": "PIN with knowledge factors",
+            "factor_type": "Knowledge-Based",
+            "security_level": "Medium Security",
+            "zero_trust_assessment": "Monitor"
+          },
+          {
+            "id": "AF-13",
+            "authentication_method": "Standard Password Only",
+            "trust_score": 0.60,
+            "description": "Policy-compliant password",
+            "factor_type": "Single Factor",
+            "security_level": "Low-Medium Security",
+            "zero_trust_assessment": "Review"
+          },
+          {
+            "id": "AF-14",
+            "authentication_method": "Social Login (Trusted)",
+            "trust_score": 0.55,
+            "description": "OAuth with trusted provider",
+            "factor_type": "Federated",
+            "security_level": "Variable Security",
+            "zero_trust_assessment": "Review"
+          },
+          {
+            "id": "AF-15",
+            "authentication_method": "Weak Password",
+            "trust_score": 0.45,
+            "description": "Password below complexity requirements",
+            "factor_type": "Weak Factor",
+            "security_level": "Low Security",
+            "zero_trust_assessment": "Alert"
+          },
+          {
+            "id": "AF-16",
+            "authentication_method": "Guest Access",
+            "trust_score": 0.40,
+            "description": "Temporary guest credentials",
+            "factor_type": "Temporary",
+            "security_level": "Low Security",
+            "zero_trust_assessment": "Alert"
+          },
+          {
+            "id": "AF-17",
+            "authentication_method": "Social Login (Untrusted)",
+            "trust_score": 0.35,
+            "description": "OAuth with unknown provider",
+            "factor_type": "Federated",
+            "security_level": "Low Security",
+            "zero_trust_assessment": "Alert"
+          },
+          {
+            "id": "AF-18",
+            "authentication_method": "Default Credentials",
+            "trust_score": 0.25,
+            "description": "Unchanged default login",
+            "factor_type": "Default",
+            "security_level": "Very Low Security",
+            "zero_trust_assessment": "Block"
+          },
+          {
+            "id": "AF-19",
+            "authentication_method": "Shared Credentials",
+            "trust_score": 0.20,
+            "description": "Shared account access",
+            "factor_type": "Shared",
+            "security_level": "Very Low Security",
+            "zero_trust_assessment": "Block"
+          },
+          {
+            "id": "AF-20",
+            "authentication_method": "Compromised Credentials",
+            "trust_score": 0.15,
+            "description": "Known compromised login",
+            "factor_type": "Compromised",
+            "security_level": "Critical Risk",
+            "zero_trust_assessment": "Block"
+          },
+          {
+            "id": "AF-21",
+            "authentication_method": "Brute Force Pattern",
+            "trust_score": 0.10,
+            "description": "Multiple failed attempts",
+            "factor_type": "Attack Pattern",
+            "security_level": "Critical Risk",
+            "zero_trust_assessment": "Block"
+          },
+          {
+            "id": "AF-22",
+            "authentication_method": "No Authentication",
+            "trust_score": 0.05,
+            "description": "Unauthenticated access",
+            "factor_type": "None",
+            "security_level": "No Security",
+            "zero_trust_assessment": "Block"
+          }
+        ]
+      },
+      "authentication_patterns": {
+        "code": "AP",
+        "weight": 0.12,
+        "description": "Authentication Behavior Patterns",
+        "scenarios": [
+          {
+            "id": "AP-01",
+            "authentication_behavior": "Consistent Business Hours",
+            "trust_score": 1.00,
+            "description": "Regular authentication during work hours",
+            "pattern_type": "Standard Pattern",
+            "behavior_analysis": "Normal Behavior",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "AP-02",
+            "authentication_behavior": "Predictable Daily Routine",
+            "trust_score": 0.98,
+            "description": "Consistent daily login patterns",
+            "pattern_type": "Routine Pattern",
+            "behavior_analysis": "Stable Behavior",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "AP-03",
+            "authentication_behavior": "Location-Consistent Login",
+            "trust_score": 0.96,
+            "description": "Authentication from usual locations",
+            "pattern_type": "Geographic Pattern",
+            "behavior_analysis": "Expected Behavior",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "AP-04",
+            "authentication_behavior": "Device-Consistent Pattern",
+            "trust_score": 0.94,
+            "description": "Regular device-based authentication",
+            "pattern_type": "Device Pattern",
+            "behavior_analysis": "Familiar Behavior",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "AP-05",
+            "authentication_behavior": "Gradual Pattern Evolution",
+            "trust_score": 0.92,
+            "description": "Slowly evolving authentication habits",
+            "pattern_type": "Evolving Pattern",
+            "behavior_analysis": "Natural Change",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "AP-06",
+            "authentication_behavior": "Project-Based Variation",
+            "trust_score": 0.88,
+            "description": "Pattern changes during projects",
+            "pattern_type": "Project Pattern",
+            "behavior_analysis": "Work-Related",
+            "risk_assessment": "Acceptable"
+          },
+          {
+            "id": "AP-07",
+            "authentication_behavior": "Seasonal Pattern Changes",
+            "trust_score": 0.85,
+            "description": "Authentication patterns vary by season",
+            "pattern_type": "Seasonal Pattern",
+            "behavior_analysis": "Predictable Variation",
+            "risk_assessment": "Acceptable"
+          },
+          {
+            "id": "AP-08",
+            "authentication_behavior": "Travel-Related Changes",
+            "trust_score": 0.82,
+            "description": "Different patterns during travel",
+            "pattern_type": "Travel Pattern",
+            "behavior_analysis": "Expected Variation",
+            "risk_assessment": "Acceptable"
+          },
+          {
+            "id": "AP-09",
+            "authentication_behavior": "Occasional Off-Hours",
+            "trust_score": 0.78,
+            "description": "Infrequent after-hours authentication",
+            "pattern_type": "Occasional Pattern",
+            "behavior_analysis": "Minor Deviation",
+            "risk_assessment": "Monitor"
+          },
+          {
+            "id": "AP-10",
+            "authentication_behavior": "New Location Pattern",
+            "trust_score": 0.75,
+            "description": "Authentication from new but valid location",
+            "pattern_type": "Location Change",
+            "behavior_analysis": "Geographic Shift",
+            "risk_assessment": "Monitor"
+          },
+          {
+            "id": "AP-11",
+            "authentication_behavior": "Device Addition Pattern",
+            "trust_score": 0.72,
+            "description": "New device in authentication mix",
+            "pattern_type": "Device Addition",
+            "behavior_analysis": "Device Expansion",
+            "risk_assessment": "Monitor"
+          },
+          {
+            "id": "AP-12",
+            "authentication_behavior": "Irregular Timing",
+            "trust_score": 0.68,
+            "description": "Inconsistent authentication times",
+            "pattern_type": "Irregular Pattern",
+            "behavior_analysis": "Unpredictable Timing",
+            "risk_assessment": "Monitor"
+          },
+          {
+            "id": "AP-13",
+            "authentication_behavior": "Weekend Work Pattern",
+            "trust_score": 0.65,
+            "description": "Regular weekend authentications",
+            "pattern_type": "Weekend Pattern",
+            "behavior_analysis": "Extended Work",
+            "risk_assessment": "Review"
+          },
+          {
+            "id": "AP-14",
+            "authentication_behavior": "Multiple Location Pattern",
+            "trust_score": 0.60,
+            "description": "Authentication from various locations",
+            "pattern_type": "Multi-Location",
+            "behavior_analysis": "High Mobility",
+            "risk_assessment": "Review"
+          },
+          {
+            "id": "AP-15",
+            "authentication_behavior": "Rapid Pattern Change",
+            "trust_score": 0.55,
+            "description": "Sudden change in authentication habits",
+            "pattern_type": "Sudden Change",
+            "behavior_analysis": "Behavioral Shift",
+            "risk_assessment": "Review"
+          },
+          {
+            "id": "AP-16",
+            "authentication_behavior": "Holiday/Off-Time Access",
+            "trust_score": 0.50,
+            "description": "Authentication during holidays",
+            "pattern_type": "Holiday Pattern",
+            "behavior_analysis": "Unusual Timing",
+            "risk_assessment": "Alert"
+          },
+          {
+            "id": "AP-17",
+            "authentication_behavior": "Suspicious Timing",
+            "trust_score": 0.45,
+            "description": "Authentication at unusual hours",
+            "pattern_type": "Suspicious Timing",
+            "behavior_analysis": "Anomalous Behavior",
+            "risk_assessment": "Alert"
+          },
+          {
+            "id": "AP-18",
+            "authentication_behavior": "Geographic Impossibility",
+            "trust_score": 0.35,
+            "description": "Impossible travel between logins",
+            "pattern_type": "Impossible Pattern",
+            "behavior_analysis": "Geographic Anomaly",
+            "risk_assessment": "Alert"
+          },
+          {
+            "id": "AP-19",
+            "authentication_behavior": "Rapid Multiple Attempts",
+            "trust_score": 0.25,
+            "description": "Multiple rapid authentication attempts",
+            "pattern_type": "Rapid Pattern",
+            "behavior_analysis": "Suspicious Activity",
+            "risk_assessment": "Block"
+          },
+          {
+            "id": "AP-20",
+            "authentication_behavior": "Concurrent Sessions",
+            "trust_score": 0.20,
+            "description": "Simultaneous authentications",
+            "pattern_type": "Concurrent Pattern",
+            "behavior_analysis": "Multiple Sessions",
+            "risk_assessment": "Block"
+          },
+          {
+            "id": "AP-21",
+            "authentication_behavior": "Botnet-Like Pattern",
+            "trust_score": 0.15,
+            "description": "Automated authentication pattern",
+            "pattern_type": "Bot Pattern",
+            "behavior_analysis": "Automated Behavior",
+            "risk_assessment": "Block"
+          },
+          {
+            "id": "AP-22",
+            "authentication_behavior": "Attack Vector Pattern",
+            "trust_score": 0.10,
+            "description": "Pattern consistent with attacks",
+            "pattern_type": "Attack Pattern",
+            "behavior_analysis": "Malicious Behavior",
+            "risk_assessment": "Block"
+          },
+          {
+            "id": "AP-23",
+            "authentication_behavior": "Credential Stuffing",
+            "trust_score": 0.05,
+            "description": "Mass credential testing pattern",
+            "pattern_type": "Stuffing Pattern",
+            "behavior_analysis": "Bulk Attacks",
+            "risk_assessment": "Block"
+          }
+        ]
+      },
+      "enterprise_presence": {
+        "code": "EP",
+        "weight": 0.13,
+        "description": "Enterprise Interaction Patterns",
+        "scenarios": [
+          {
+            "id": "EP-01",
+            "enterprise_interaction": "Deep Enterprise Integration",
+            "trust_score": 1.00,
+            "description": "Consistent interaction with all enterprise systems",
+            "presence_type": "Full Integration",
+            "interaction_level": "Deep Engagement",
+            "zero_trust_validation": "Fully Validated"
+          },
+          {
+            "id": "EP-02",
+            "enterprise_interaction": "Regular Core System Usage",
+            "trust_score": 0.98,
+            "description": "Daily interaction with primary enterprise services",
+            "presence_type": "Core Usage",
+            "interaction_level": "High Engagement",
+            "zero_trust_validation": "Fully Validated"
+          },
+          {
+            "id": "EP-03",
+            "enterprise_interaction": "Department Resource Focus",
+            "trust_score": 0.96,
+            "description": "Consistent departmental system usage",
+            "presence_type": "Department Focus",
+            "interaction_level": "Targeted Engagement",
+            "zero_trust_validation": "Validated"
+          },
+          {
+            "id": "EP-04",
+            "enterprise_interaction": "Project-Based Integration",
+            "trust_score": 0.94,
+            "description": "Strong interaction during active projects",
+            "presence_type": "Project Integration",
+            "interaction_level": "Project Engagement",
+            "zero_trust_validation": "Validated"
+          },
+          {
+            "id": "EP-05",
+            "enterprise_interaction": "Standard Employee Pattern",
+            "trust_score": 0.92,
+            "description": "Typical employee resource usage",
+            "presence_type": "Standard Pattern",
+            "interaction_level": "Normal Engagement",
+            "zero_trust_validation": "Validated"
+          },
+          {
+            "id": "EP-06",
+            "enterprise_interaction": "Collaborative Tool Usage",
+            "trust_score": 0.88,
+            "description": "Regular use of collaboration platforms",
+            "presence_type": "Collaboration Focus",
+            "interaction_level": "Team Engagement",
+            "zero_trust_validation": "Compliant"
+          },
+          {
+            "id": "EP-07",
+            "enterprise_interaction": "Remote Worker Pattern",
+            "trust_score": 0.85,
+            "description": "Consistent remote access to enterprise resources",
+            "presence_type": "Remote Pattern",
+            "interaction_level": "Distributed Engagement",
+            "zero_trust_validation": "Compliant"
+          },
+          {
+            "id": "EP-08",
+            "enterprise_interaction": "Contractor Access Pattern",
+            "trust_score": 0.82,
+            "description": "Limited but consistent contractor resource usage",
+            "presence_type": "Contractor Pattern",
+            "interaction_level": "Limited Engagement",
+            "zero_trust_validation": "Acceptable"
+          },
+          {
+            "id": "EP-09",
+            "enterprise_interaction": "New Employee Pattern",
+            "trust_score": 0.80,
+            "description": "Growing interaction with enterprise systems",
+            "presence_type": "Onboarding Pattern",
+            "interaction_level": "Learning Engagement",
+            "zero_trust_validation": "Acceptable"
+          },
+          {
+            "id": "EP-10",
+            "enterprise_interaction": "Seasonal Worker Pattern",
+            "trust_score": 0.75,
+            "description": "Periodic but consistent enterprise interaction",
+            "presence_type": "Seasonal Pattern",
+            "interaction_level": "Periodic Engagement",
+            "zero_trust_validation": "Monitor"
+          },
+          {
+            "id": "EP-11",
+            "enterprise_interaction": "Partner System Access",
+            "trust_score": 0.72,
+            "description": "Access to shared partner resources",
+            "presence_type": "Partner Pattern",
+            "interaction_level": "External Engagement",
+            "zero_trust_validation": "Monitor"
+          },
+          {
+            "id": "EP-12",
+            "enterprise_interaction": "Limited System Access",
+            "trust_score": 0.68,
+            "description": "Interaction with subset of systems",
+            "presence_type": "Limited Access",
+            "interaction_level": "Restricted Engagement",
+            "zero_trust_validation": "Monitor"
+          },
+          {
+            "id": "EP-13",
+            "enterprise_interaction": "Guest User Pattern",
+            "trust_score": 0.65,
+            "description": "Minimal enterprise resource interaction",
+            "presence_type": "Guest Pattern",
+            "interaction_level": "Minimal Engagement",
+            "zero_trust_validation": "Review"
+          },
+          {
+            "id": "EP-14",
+            "enterprise_interaction": "Declining Interaction",
+            "trust_score": 0.60,
+            "description": "Decreasing enterprise system usage",
+            "presence_type": "Declining Pattern",
+            "interaction_level": "Reduced Engagement",
+            "zero_trust_validation": "Review"
+          },
+          {
+            "id": "EP-15",
+            "enterprise_interaction": "Intermittent Access",
+            "trust_score": 0.55,
+            "description": "Sporadic enterprise resource usage",
+            "presence_type": "Intermittent Pattern",
+            "interaction_level": "Inconsistent Engagement",
+            "zero_trust_validation": "Review"
+          },
+          {
+            "id": "EP-16",
+            "enterprise_interaction": "External Focus Pattern",
+            "trust_score": 0.50,
+            "description": "Primarily external system interaction",
+            "presence_type": "External Pattern",
+            "interaction_level": "Limited Enterprise Use",
+            "zero_trust_validation": "Alert"
+          },
+          {
+            "id": "EP-17",
+            "enterprise_interaction": "Unusual Resource Access",
+            "trust_score": 0.45,
+            "description": "Access to unexpected enterprise resources",
+            "presence_type": "Unusual Access",
+            "interaction_level": "Anomalous Engagement",
+            "zero_trust_validation": "Alert"
+          },
+          {
+            "id": "EP-18",
+            "enterprise_interaction": "No Recent Interaction",
+            "trust_score": 0.35,
+            "description": "Lack of recent enterprise system usage",
+            "presence_type": "Inactive Pattern",
+            "interaction_level": "No Engagement",
+            "zero_trust_validation": "Alert"
+          },
+          {
+            "id": "EP-19",
+            "enterprise_interaction": "Unauthorized Resource Attempts",
+            "trust_score": 0.25,
+            "description": "Attempts to access unauthorized systems",
+            "presence_type": "Unauthorized Pattern",
+            "interaction_level": "Inappropriate Access",
+            "zero_trust_validation": "Block"
+          },
+          {
+            "id": "EP-20",
+            "enterprise_interaction": "Data Hoarding Pattern",
+            "trust_score": 0.20,
+            "description": "Excessive data download from enterprise systems",
+            "presence_type": "Hoarding Pattern",
+            "interaction_level": "Suspicious Activity",
+            "zero_trust_validation": "Block"
+          },
+          {
+            "id": "EP-21",
+            "enterprise_interaction": "System Reconnaissance",
+            "trust_score": 0.15,
+            "description": "Systematic exploration of enterprise resources",
+            "presence_type": "Reconnaissance Pattern",
+            "interaction_level": "Discovery Attacks",
+            "zero_trust_validation": "Block"
+          },
+          {
+            "id": "EP-22",
+            "enterprise_interaction": "Privilege Escalation Attempts",
+            "trust_score": 0.10,
+            "description": "Attempts to gain elevated enterprise access",
+            "presence_type": "Escalation Pattern",
+            "interaction_level": "Attack Behavior",
+            "zero_trust_validation": "Block"
+          },
+          {
+            "id": "EP-23",
+            "enterprise_interaction": "Data Exfiltration Pattern",
+            "trust_score": 0.05,
+            "description": "Evidence of enterprise data theft",
+            "presence_type": "Exfiltration Pattern",
+            "interaction_level": "Malicious Activity",
+            "zero_trust_validation": "Block"
+          }
+        ]
+      },
+      "trust_history": {
+        "code": "TH",
+        "weight": 0.11,
+        "description": "Historical Trust Performance",
+        "scenarios": [
+          {
+            "id": "TH-01",
+            "historical_trust_pattern": "Consistently High Trust",
+            "trust_score": 1.00,
+            "description": "Long history of high trust scores",
+            "history_type": "Stable High",
+            "trust_trajectory": "Positive Trajectory",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "TH-02",
+            "historical_trust_pattern": "Improving Trust Trend",
+            "trust_score": 0.98,
+            "description": "Steadily increasing trust scores",
+            "history_type": "Improving",
+            "trust_trajectory": "Upward Trajectory",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "TH-03",
+            "historical_trust_pattern": "Stable Good Trust",
+            "trust_score": 0.96,
+            "description": "Consistently good trust performance",
+            "history_type": "Stable Good",
+            "trust_trajectory": "Steady Trajectory",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "TH-04",
+            "historical_trust_pattern": "Recent Trust Recovery",
+            "trust_score": 0.94,
+            "description": "Recovered from previous trust issues",
+            "history_type": "Recovery",
+            "trust_trajectory": "Recovery Trajectory",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "TH-05",
+            "historical_trust_pattern": "Long-Term User",
+            "trust_score": 0.92,
+            "description": "Extended history with good trust",
+            "history_type": "Veteran User",
+            "trust_trajectory": "Established Pattern",
+            "risk_assessment": "Trusted"
+          },
+          {
+            "id": "TH-06",
+            "historical_trust_pattern": "Project-Based Trust Peaks",
+            "trust_score": 0.88,
+            "description": "High trust during active projects",
+            "history_type": "Project Peaks",
+            "trust_trajectory": "Variable Trajectory",
+            "risk_assessment": "Acceptable"
+          },
+          {
+            "id": "TH-07",
+            "historical_trust_pattern": "Seasonal Trust Variations",
+            "trust_score": 0.85,
+            "description": "Trust varies predictably by season",
+            "history_type": "Seasonal Pattern",
+            "trust_trajectory": "Cyclical Trajectory",
+            "risk_assessment": "Acceptable"
+          },
+          {
+            "id": "TH-08",
+            "historical_trust_pattern": "New User Progression",
+            "trust_score": 0.82,
+            "description": "Building trust as new user",
+            "history_type": "New User",
+            "trust_trajectory": "Building Trajectory",
+            "risk_assessment": "Acceptable"
+          },
+          {
+            "id": "TH-09",
+            "historical_trust_pattern": "Minor Trust Fluctuations",
+            "trust_score": 0.80,
+            "description": "Small variations in trust scores",
+            "history_type": "Minor Variations",
+            "trust_trajectory": "Stable with Noise",
+            "risk_assessment": "Acceptable"
+          },
+          {
+            "id": "TH-10",
+            "historical_trust_pattern": "Role Change Adaptation",
+            "trust_score": 0.75,
+            "description": "Trust adapting to new role responsibilities",
+            "history_type": "Role Adaptation",
+            "trust_trajectory": "Transitional Pattern",
+            "risk_assessment": "Monitor"
+          },
+          {
+            "id": "TH-11",
+            "historical_trust_pattern": "Occasional Trust Dips",
+            "trust_score": 0.72,
+            "description": "Infrequent drops in trust scores",
+            "history_type": "Occasional Dips",
+            "trust_trajectory": "Generally Stable",
+            "risk_assessment": "Monitor"
+          },
+          {
+            "id": "TH-12",
+            "historical_trust_pattern": "Contractor Trust Pattern",
+            "trust_score": 0.68,
+            "description": "Trust pattern typical of contractors",
+            "history_type": "Contractor Pattern",
+            "trust_trajectory": "Project-Based Trust",
+            "risk_assessment": "Monitor"
+          },
+          {
+            "id": "TH-13",
+            "historical_trust_pattern": "Mixed Trust History",
+            "trust_score": 0.65,
+            "description": "Combination of high and low trust periods",
+            "history_type": "Mixed History",
+            "trust_trajectory": "Variable Pattern",
+            "risk_assessment": "Review"
+          },
+          {
+            "id": "TH-14",
+            "historical_trust_pattern": "Recent Trust Decline",
+            "trust_score": 0.60,
+            "description": "Declining trust scores recently",
+            "history_type": "Declining",
+            "trust_trajectory": "Downward Trajectory",
+            "risk_assessment": "Review"
+          },
+          {
+            "id": "TH-15",
+            "historical_trust_pattern": "Inconsistent Trust Pattern",
+            "trust_score": 0.55,
+            "description": "Unpredictable trust score variations",
+            "history_type": "Inconsistent",
+            "trust_trajectory": "Erratic Pattern",
+            "risk_assessment": "Review"
+          },
+          {
+            "id": "TH-16",
+            "historical_trust_pattern": "Trust Recovery Attempts",
+            "trust_score": 0.50,
+            "description": "Multiple attempts to rebuild trust",
+            "history_type": "Recovery Attempts",
+            "trust_trajectory": "Struggling Pattern",
+            "risk_assessment": "Alert"
+          },
+          {
+            "id": "TH-17",
+            "historical_trust_pattern": "Historically Low Trust",
+            "trust_score": 0.45,
+            "description": "Consistent history of low trust scores",
+            "history_type": "Low History",
+            "trust_trajectory": "Poor Trajectory",
+            "risk_assessment": "Alert"
+          },
+          {
+            "id": "TH-18",
+            "historical_trust_pattern": "Trust Violations History",
+            "trust_score": 0.35,
+            "description": "Previous trust policy violations",
+            "history_type": "Violation History",
+            "trust_trajectory": "Problematic Pattern",
+            "risk_assessment": "Alert"
+          },
+          {
+            "id": "TH-19",
+            "historical_trust_pattern": "Recent Security Incidents",
+            "trust_score": 0.25,
+            "description": "Previous trust policy violations",
+            "history_type": "Security Issues",
+            "trust_trajectory": "Risk Pattern",
+            "risk_assessment": "Block"
+          }
+        ]
+      },"input_behavior": {
+      "table_id": "IB",
+      "weight": 0.09,
+      "scenarios": [
+        {
+          "id": "IB-01",
+          "behavioral_biometrics": "Consistent Typing Pattern",
+          "trust_score": 1.00,
+          "description": "Stable typing rhythm and patterns",
+          "behavior_type": "Typing Consistency",
+          "biometric_analysis": "Normal Biometrics",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "IB-02",
+          "behavioral_biometrics": "Mouse Movement Consistency",
+          "trust_score": 0.98,
+          "description": "Predictable mouse usage patterns",
+          "behavior_type": "Mouse Patterns",
+          "biometric_analysis": "Stable Behavior",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "IB-03",
+          "behavioral_biometrics": "Touch Pattern Recognition",
+          "trust_score": 0.96,
+          "description": "Consistent mobile touch behaviors",
+          "behavior_type": "Touch Biometrics",
+          "biometric_analysis": "Natural Patterns",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "IB-04",
+          "behavioral_biometrics": "Keyboard Dynamics Match",
+          "trust_score": 0.94,
+          "description": "Typing speed and pressure consistent",
+          "behavior_type": "Keyboard Dynamics",
+          "biometric_analysis": "Biometric Match",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "IB-05",
+          "behavioral_biometrics": "Navigation Pattern Match",
+          "trust_score": 0.92,
+          "description": "Consistent application navigation",
+          "behavior_type": "Navigation Behavior",
+          "biometric_analysis": "Familiar Patterns",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "IB-06",
+          "behavioral_biometrics": "Scroll Behavior Consistency",
+          "trust_score": 0.88,
+          "description": "Predictable scrolling patterns",
+          "behavior_type": "Scroll Biometrics",
+          "biometric_analysis": "Consistent Behavior",
+          "risk_assessment": "Acceptable"
+        },
+        {
+          "id": "IB-07",
+          "behavioral_biometrics": "Click Pattern Recognition",
+          "trust_score": 0.85,
+          "description": "Familiar clicking behaviors",
+          "behavior_type": "Click Patterns",
+          "biometric_analysis": "Expected Behavior",
+          "risk_assessment": "Acceptable"
+        },
+        {
+          "id": "IB-08",
+          "behavioral_biometrics": "Multi-Device Consistency",
+          "trust_score": 0.82,
+          "description": "Similar patterns across devices",
+          "behavior_type": "Cross-Device",
+          "biometric_analysis": "Device Consistency",
+          "risk_assessment": "Acceptable"
+        },
+        {
+          "id": "IB-09",
+          "behavioral_biometrics": "Adaptive Learning Pattern",
+          "trust_score": 0.80,
+          "description": "Gradually adapting input patterns",
+          "behavior_type": "Learning Pattern",
+          "biometric_analysis": "Natural Evolution",
+          "risk_assessment": "Acceptable"
+        },
+        {
+          "id": "IB-10",
+          "behavioral_biometrics": "Fatigue-Adjusted Patterns",
+          "trust_score": 0.75,
+          "description": "Patterns accounting for user fatigue",
+          "behavior_type": "Fatigue Patterns",
+          "biometric_analysis": "Natural Variation",
+          "risk_assessment": "Monitor"
+        },
+        {
+          "id": "IB-11",
+          "behavioral_biometrics": "New Device Adaptation",
+          "trust_score": 0.72,
+          "description": "Adapting patterns to new device",
+          "behavior_type": "Device Adaptation",
+          "biometric_analysis": "Learning Phase",
+          "risk_assessment": "Monitor"
+        },
+        {
+          "id": "IB-12",
+          "behavioral_biometrics": "Stress-Affected Patterns",
+          "trust_score": 0.68,
+          "description": "Input patterns showing stress indicators",
+          "behavior_type": "Stress Indicators",
+          "biometric_analysis": "Emotional State",
+          "risk_assessment": "Monitor"
+        },
+        {
+          "id": "IB-13",
+          "behavioral_biometrics": "Minor Pattern Deviations",
+          "trust_score": 0.65,
+          "description": "Small deviations from normal patterns",
+          "behavior_type": "Minor Deviations",
+          "biometric_analysis": "Slight Variations",
+          "risk_assessment": "Review"
+        },
+        {
+          "id": "IB-14",
+          "behavioral_biometrics": "Inconsistent Input Speed",
+          "trust_score": 0.60,
+          "description": "Varying typing or input speeds",
+          "behavior_type": "Speed Variations",
+          "biometric_analysis": "Inconsistent Rhythm",
+          "risk_assessment": "Review"
+        },
+        {
+          "id": "IB-15",
+          "behavioral_biometrics": "Pattern Learning Phase",
+          "trust_score": 0.55,
+          "description": "System still learning user patterns",
+          "behavior_type": "Learning Phase",
+          "biometric_analysis": "Insufficient Data",
+          "risk_assessment": "Review"
+        },
+        {
+          "id": "IB-16",
+          "behavioral_biometrics": "Unusual Input Patterns",
+          "trust_score": 0.50,
+          "description": "Patterns different from normal",
+          "behavior_type": "Unusual Patterns",
+          "biometric_analysis": "Anomalous Behavior",
+          "risk_assessment": "Alert"
+        },
+        {
+          "id": "IB-17",
+          "behavioral_biometrics": "Rapid Input Changes",
+          "trust_score": 0.45,
+          "description": "Sudden changes in input behavior",
+          "behavior_type": "Rapid Changes",
+          "biometric_analysis": "Behavioral Shift",
+          "risk_assessment": "Alert"
+        },
+        {
+          "id": "IB-18",
+          "behavioral_biometrics": "Non-Human Pattern Detection",
+          "trust_score": 0.35,
+          "description": "Input suggesting automated behavior",
+          "behavior_type": "Automation",
+          "biometric_analysis": "Bot-Like Behavior",
+          "risk_assessment": "Alert"
+        },
+        {
+          "id": "IB-19",
+          "behavioral_biometrics": "Copy-Paste Heavy Usage",
+          "trust_score": 0.25,
+          "description": "Excessive copy-paste operations",
+          "behavior_type": "Copy-Paste Pattern",
+          "biometric_analysis": "Unusual Behavior",
+          "risk_assessment": "Block"
+        },
+        {
+          "id": "IB-20",
+          "behavioral_biometrics": "Script-Like Input Pattern",
+          "trust_score": 0.20,
+          "description": "Input consistent with scripted behavior",
+          "behavior_type": "Script Pattern",
+          "biometric_analysis": "Automated Input",
+          "risk_assessment": "Block"
+        },
+        {
+          "id": "IB-21",
+          "behavioral_biometrics": "Keylogger Indicators",
+          "trust_score": 0.15,
+          "description": "Patterns suggesting keylogger presence",
+          "behavior_type": "Malware Indicators",
+          "biometric_analysis": "Security Threat",
+          "risk_assessment": "Block"
+        },
+        {
+          "id": "IB-22",
+          "behavioral_biometrics": "Remote Control Patterns",
+          "trust_score": 0.10,
+          "description": "Input suggesting remote control",
+          "behavior_type": "Remote Control",
+          "biometric_analysis": "Unauthorized Access",
+          "risk_assessment": "Block"
+        },
+        {
+          "id": "IB-23",
+          "behavioral_biometrics": "Malicious Input Behavior",
+          "trust_score": 0.05,
+          "description": "Patterns indicating malicious intent",
+          "behavior_type": "Malicious Behavior",
+          "biometric_analysis": "Attack Indicators",
+          "risk_assessment": "Block"
+        }
+      ]
+    },
+    "service_usage": {
+      "table_id": "SU",
+      "weight": 0.08,
+      "scenarios": [
+        {
+          "id": "SU-01",
+          "service_familiarity": "Expert User Pattern",
+          "trust_score": 1.00,
+          "description": "Deep familiarity with requested service",
+          "usage_type": "Expert Usage",
+          "familiarity_level": "Complete Mastery",
+          "zero_trust_assessment": "Fully Trusted"
+        },
+        {
+          "id": "SU-02",
+          "service_familiarity": "Regular Daily Usage",
+          "trust_score": 0.98,
+          "description": "Consistent daily service interaction",
+          "usage_type": "Daily Usage",
+          "familiarity_level": "High Familiarity",
+          "zero_trust_assessment": "Fully Trusted"
+        },
+        {
+          "id": "SU-03",
+          "service_familiarity": "Department Power User",
+          "trust_score": 0.96,
+          "description": "Advanced usage within department context",
+          "usage_type": "Power User",
+          "familiarity_level": "Advanced Familiarity",
+          "zero_trust_assessment": "Trusted"
+        },
+        {
+          "id": "SU-04",
+          "service_familiarity": "Frequent Service Access",
+          "trust_score": 0.94,
+          "description": "Regular and competent service usage",
+          "usage_type": "Frequent Usage",
+          "familiarity_level": "Strong Familiarity",
+          "zero_trust_assessment": "Trusted"
+        },
+        {
+          "id": "SU-05",
+          "service_familiarity": "Standard User Pattern",
+          "trust_score": 0.92,
+          "description": "Normal service usage patterns",
+          "usage_type": "Standard Usage",
+          "familiarity_level": "Good Familiarity",
+          "zero_trust_assessment": "Trusted"
+        },
+        {
+          "id": "SU-06",
+          "service_familiarity": "Project-Specific Usage",
+          "trust_score": 0.88,
+          "description": "Service usage tied to specific projects",
+          "usage_type": "Project Usage",
+          "familiarity_level": "Context Familiarity",
+          "zero_trust_assessment": "Compliant"
+        },
+        {
+          "id": "SU-07",
+          "service_familiarity": "Growing Service Adoption",
+          "trust_score": 0.85,
+          "description": "Increasing familiarity with service",
+          "usage_type": "Growing Usage",
+          "familiarity_level": "Developing Familiarity",
+          "zero_trust_assessment": "Compliant"
+        },
+        {
+          "id": "SU-08",
+          "service_familiarity": "Occasional User Pattern",
+          "trust_score": 0.82,
+          "description": "Periodic but competent service usage",
+          "usage_type": "Occasional Usage",
+          "familiarity_level": "Moderate Familiarity",
+          "zero_trust_assessment": "Acceptable"
+        },
+        {
+          "id": "SU-09",
+          "service_familiarity": "Seasonal Service Usage",
+          "trust_score": 0.80,
+          "description": "Service usage varies by season/project",
+          "usage_type": "Seasonal Usage",
+          "familiarity_level": "Cyclical Familiarity",
+          "zero_trust_assessment": "Acceptable"
+        },
+        {
+          "id": "SU-10",
+          "service_familiarity": "Cross-Training Usage",
+          "trust_score": 0.75,
+          "description": "Service usage for cross-training purposes",
+          "usage_type": "Training Usage",
+          "familiarity_level": "Learning Familiarity",
+          "zero_trust_assessment": "Monitor"
+        },
+        {
+          "id": "SU-11",
+          "service_familiarity": "New Service Exploration",
+          "trust_score": 0.72,
+          "description": "Exploring newly available services",
+          "usage_type": "Exploration",
+          "familiarity_level": "Basic Familiarity",
+          "zero_trust_assessment": "Monitor"
+        },
+        {
+          "id": "SU-12",
+          "service_familiarity": "Guided Service Usage",
+          "trust_score": 0.68,
+          "description": "Service usage with guidance/support",
+          "usage_type": "Guided Usage",
+          "familiarity_level": "Assisted Familiarity",
+          "zero_trust_assessment": "Monitor"
+        },
+        {
+          "id": "SU-13",
+          "service_familiarity": "Limited Feature Usage",
+          "trust_score": 0.65,
+          "description": "Using only basic service features",
+          "usage_type": "Limited Usage",
+          "familiarity_level": "Restricted Familiarity",
+          "zero_trust_assessment": "Review"
+        },
+        {
+          "id": "SU-14",
+          "service_familiarity": "Unfamiliar Service Access",
+          "trust_score": 0.60,
+          "description": "Accessing unfamiliar service",
+          "usage_type": "Unfamiliar Access",
+          "familiarity_level": "Low Familiarity",
+          "zero_trust_assessment": "Review"
+        },
+        {
+          "id": "SU-15",
+          "service_familiarity": "One-Time Service Request",
+          "trust_score": 0.55,
+          "description": "Rare access to specific service",
+          "usage_type": "One-Time",
+          "familiarity_level": "Minimal Familiarity",
+          "zero_trust_assessment": "Review"
+        },
+        {
+          "id": "SU-16",
+          "service_familiarity": "Service Misuse Pattern",
+          "trust_score": 0.50,
+          "description": "Using service outside intended purpose",
+          "usage_type": "Misuse Pattern",
+          "familiarity_level": "Poor Understanding",
+          "zero_trust_assessment": "Alert"
+        },
+        {
+          "id": "SU-17",
+          "service_familiarity": "Administrative Override",
+          "trust_score": 0.45,
+          "description": "Service access through admin override",
+          "usage_type": "Override Access",
+          "familiarity_level": "Unauthorized Pattern",
+          "zero_trust_assessment": "Alert"
+        },
+        {
+          "id": "SU-18",
+          "service_familiarity": "Bulk Service Operations",
+          "trust_score": 0.35,
+          "description": "Excessive bulk operations on service",
+          "usage_type": "Bulk Operations",
+          "familiarity_level": "Suspicious Usage",
+          "zero_trust_assessment": "Alert"
+        },
+        {
+          "id": "SU-19",
+          "service_familiarity": "Service Enumeration",
+          "trust_score": 0.25,
+          "description": "Systematic exploration of service features",
+          "usage_type": "Enumeration",
+          "familiarity_level": "Discovery Pattern",
+          "zero_trust_assessment": "Block"
+        },
+        {
+          "id": "SU-20",
+          "service_familiarity": "Privilege Escalation Attempts",
+          "trust_score": 0.20,
+          "description": "Attempting elevated service access",
+          "usage_type": "Escalation",
+          "familiarity_level": "Attack Pattern",
+          "zero_trust_assessment": "Block"
+        },
+        {
+          "id": "SU-21",
+          "service_familiarity": "Service Abuse Pattern",
+          "trust_score": 0.15,
+          "description": "Using service for unauthorized purposes",
+          "usage_type": "Abuse Pattern",
+          "familiarity_level": "Malicious Usage",
+          "zero_trust_assessment": "Block"
+        },
+        {
+          "id": "SU-22",
+          "service_familiarity": "Data Mining Pattern",
+          "trust_score": 0.10,
+          "description": "Systematic data extraction from service",
+          "usage_type": "Mining Pattern",
+          "familiarity_level": "Extraction Attack",
+          "zero_trust_assessment": "Block"
+        },
+        {
+          "id": "SU-23",
+          "service_familiarity": "Service Attack Vector",
+          "trust_score": 0.05,
+          "description": "Using service as attack platform",
+          "usage_type": "Attack Vector",
+          "familiarity_level": "Weaponized Usage",
+          "zero_trust_assessment": "Block"
+        }
+      ]
+    },
+    "device_usage": {
+      "table_id": "DU",
+      "weight": 0.10,
+      "scenarios": [
+        {
+          "id": "DU-01",
+          "device_recognition": "Primary Work Device",
+          "trust_score": 1.00,
+          "description": "User's main work device",
+          "recognition_type": "Primary Device",
+          "device_familiarity": "Complete Recognition",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "DU-02",
+          "device_recognition": "Secondary Work Device",
+          "trust_score": 0.98,
+          "description": "Approved secondary work device",
+          "recognition_type": "Secondary Device",
+          "device_familiarity": "High Recognition",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "DU-03",
+          "device_recognition": "Mobile Device - Enrolled",
+          "trust_score": 0.96,
+          "description": "MDM-enrolled mobile device",
+          "recognition_type": "Enrolled Mobile",
+          "device_familiarity": "Strong Recognition",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "DU-04",
+          "device_recognition": "Home Office Device",
+          "trust_score": 0.94,
+          "description": "Approved home office device",
+          "recognition_type": "Home Device",
+          "device_familiarity": "Good Recognition",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "DU-05",
+          "device_recognition": "Travel Device - Known",
+          "trust_score": 0.92,
+          "description": "Recognized travel device",
+          "recognition_type": "Travel Device",
+          "device_familiarity": "Known Recognition",
+          "risk_assessment": "Trusted"
+        },
+        {
+          "id": "DU-06",
+          "device_recognition": "Backup Device - Registered",
+          "trust_score": 0.88,
+          "description": "Registered backup device",
+          "recognition_type": "Backup Device",
+          "device_familiarity": "Registered Recognition",
+          "risk_assessment": "Acceptable"
+        },
+        {
+          "id": "DU-07",
+          "device_recognition": "Team Shared Device",
+          "trust_score": 0.85,
+          "description": "Approved team shared device",
+          "recognition_type": "Shared Device",
+          "device_familiarity": "Group Recognition",
+          "risk_assessment": "Acceptable"
+        },
+        {
+          "id": "DU-08",
+          "device_recognition": "Project Device - Assigned",
+          "trust_score": 0.82,
+          "description": "Device assigned for specific project",
+          "recognition_type": "Project Device",
+          "device_familiarity": "Assignment Recognition",
+          "risk_assessment": "Acceptable"
+        },
+        {
+          "id": "DU-09",
+          "device_recognition": "BYOD - Fully Enrolled",
+          "trust_score": 0.80,
+          "description": "Personal device with full enrollment",
+          "recognition_type": "BYOD Enrolled",
+          "device_familiarity": "Managed Recognition",
+          "risk_assessment": "Acceptable"
+        },
+        {
+          "id": "DU-10",
+          "device_recognition": "Recently Added Device",
+          "trust_score": 0.75,
+          "description": "Newly registered device",
+          "recognition_type": "New Device",
+          "device_familiarity": "Recent Recognition",
+          "risk_assessment": "Monitor"
+        },
+        {
+          "id": "DU-11",
+          "device_recognition": "Replacement Device",
+          "trust_score": 0.72,
+          "description": "Device replacing previous device",
+          "recognition_type": "Replacement",
+          "device_familiarity": "Transition Recognition",
+          "risk_assessment": "Monitor"
+        },
+        {
+          "id": "DU-12",
+          "device_recognition": "Temporary Device Access",
+          "trust_score": 0.68,
+          "description": "Temporary device assignment",
+          "recognition_type": "Temporary Device",
+          "device_familiarity": "Limited Recognition",
+          "risk_assessment": "Monitor"
+        },
+        {
+          "id": "DU-13",
+          "device_recognition": "BYOD - Partially Enrolled",
+          "trust_score": 0.65,
+          "description": "Personal device with limited enrollment",
+          "recognition_type": "BYOD Partial",
+          "device_familiarity": "Partial Recognition",
+          "risk_assessment": "Review"
+        },
+        {
+          "id": "DU-14",
+          "device_recognition": "Guest Device - Approved",
+          "trust_score": 0.60,
+          "description": "Approved guest device access",
+          "recognition_type": "Guest Device",
+          "device_familiarity": "Visitor Recognition",
+          "risk_assessment": "Review"
+        },
+        {
+          "id": "DU-15",
+          "device_recognition": "Unknown Device Type",
+          "trust_score": 0.55,
+          "description": "Unrecognized device category",
+          "recognition_type": "Unknown Type",
+          "device_familiarity": "No Recognition",
+          "risk_assessment": "Review"
+        },
+        {
+          "id": "DU-16",
+          "device_recognition": "Device Profile Mismatch",
+          "trust_score": 0.50,
+          "description": "Device doesn't match user profile",
+          "recognition_type": "Profile Mismatch",
+          "device_familiarity": "Inconsistent Recognition",
+          "risk_assessment": "Alert"
+        },
+        {
+          "id": "DU-17",
+          "device_recognition": "Suspicious Device Properties",
+          "trust_score": 0.45,
+          "description": "Device with suspicious characteristics",
+          "recognition_type": "Suspicious Properties",
+          "device_familiarity": "Anomalous Recognition",
+          "risk_assessment": "Alert"
+        },
+        {
+          "id": "DU-18",
+          "device_recognition": "Unmanaged Personal Device",
+          "trust_score": 0.35,
+          "description": "Personal device without enrollment",
+          "recognition_type": "Unmanaged BYOD",
+          "device_familiarity": "Uncontrolled Recognition",
+          "risk_assessment": "Alert"
+        },
+        {
+          "id": "DU-19",
+          "device_recognition": "Blacklisted Device",
+          "trust_score": 0.25,
+          "description": "Device on security blacklist",
+          "recognition_type": "Blacklisted",
+          "device_familiarity": "Blocked Recognition",
+          "risk_assessment": "Block"
+        },
+        {
+          "id": "DU-20",
+          "device_recognition": "Compromised Device Indicators",
+          "trust_score": 0.20,
+          "description": "Device showing compromise signs",
+          "recognition_type": "Compromised",
+          "device_familiarity": "Security Risk",
+          "risk_assessment": "Block"
+        },
+        {
+          "id": "DU-21",
+          "device_recognition": "Jailbroken/Rooted Device",
+          "trust_score": 0.15,
+          "description": "Modified device with root access",
+          "recognition_type": "Modified Device",
+          "device_familiarity": "Security Bypass",
+          "risk_assessment": "Block"
+        },
+        {
+          "id": "DU-22",
+          "device_recognition": "Malware-Infected Device",
+          "trust_score": 0.10,
+          "description": "Device with confirmed malware",
+          "recognition_type": "Malware Present",
+          "device_familiarity": "Active Threat",
+          "risk_assessment": "Block"
+        },
+        {
+          "id": "DU-23",
+          "device_recognition": "Attack Tool Device",
+          "trust_score": 0.05,
+          "description": "Device configured for attacks",
+          "recognition_type": "Attack Tool",
+          "device_familiarity": "Weaponized Device",
+          "risk_assessment": "Block"
+        }
+      ]
+    },
+          "access_time": {
+            "table_id": "AT",
+            "weight": 0.07,
+            "scenarios": [
+              {
+                "id": "AT-01",
+                "access_timing": "Standard Business Hours",
+                "trust_score": 1.00,
+                "description": "Access during normal work hours",
+                "time_category": "Business Hours",
+                "pattern_analysis": "Normal Pattern",
+                "risk_assessment": "Trusted"
+              },
+              {
+                "id": "AT-02",
+                "access_timing": "Early Business Hours",
+                "trust_score": 0.98,
+                "description": "Access during early work hours",
+                "time_category": "Early Business",
+                "pattern_analysis": "Dedicated Pattern",
+                "risk_assessment": "Trusted"
+              },
+              {
+                "id": "AT-03",
+                "access_timing": "Extended Business Hours",
+                "trust_score": 0.96,
+                "description": "Access during extended work hours",
+                "time_category": "Extended Business",
+                "pattern_analysis": "Committed Pattern",
+                "risk_assessment": "Trusted"
+              },
+              {
+                "id": "AT-04",
+                "access_timing": "Flexible Schedule Pattern",
+                "trust_score": 0.94,
+                "description": "Access matching flexible work schedule",
+                "time_category": "Flexible Pattern",
+                "pattern_analysis": "Approved Pattern",
+                "risk_assessment": "Trusted"
+              },
+              {
+                "id": "AT-05",
+                "access_timing": "Lunch Hour Access",
+                "trust_score": 0.92,
+                "description": "Access during lunch break",
+                "time_category": "Lunch Period",
+                "pattern_analysis": "Normal Variation",
+                "risk_assessment": "Trusted"
+              },
+              {
+                "id": "AT-06",
+                "access_timing": "Project Deadline Access",
+                "trust_score": 0.88,
+                "description": "Access during project deadlines",
+                "time_category": "Deadline Pattern",
+                "pattern_analysis": "Work-Related",
+                "risk_assessment": "Acceptable"
+              },
+              {
+                "id": "AT-07",
+                "access_timing": "Training Session Access",
+                "trust_score": 0.85,
+                "description": "Access during training periods",
+                "time_category": "Training Time",
+                "pattern_analysis": "Educational Pattern",
+                "risk_assessment": "Acceptable"
+              },
+              {
+                "id": "AT-08",
+                "access_timing": "Conference Call Access",
+                "trust_score": 0.82,
+                "description": "Access during scheduled meetings",
+                "time_category": "Meeting Time",
+                "pattern_analysis": "Scheduled Pattern",
+                "risk_assessment": "Acceptable"
+              },
+              {
+                "id": "AT-09",
+                "access_timing": "Travel Time Zone Access",
+                "trust_score": 0.80,
+                "description": "Access accounting for travel time zones",
+                "time_category": "Travel Pattern",
+                "pattern_analysis": "Geographic Adjustment",
+                "risk_assessment": "Acceptable"
+              },
+              {
+                "id": "AT-10",
+                "access_timing": "Weekend Work Access",
+                "trust_score": 0.75,
+                "description": "Access during weekend work",
+                "time_category": "Weekend Pattern",
+                "pattern_analysis": "Extended Commitment",
+                "risk_assessment": "Monitor"
+              },
+              {
+                "id": "AT-11",
+                "access_timing": "Evening Work Access",
+                "trust_score": 0.72,
+                "description": "Access during evening hours",
+                "time_category": "Evening Pattern",
+                "pattern_analysis": "After-Hours Work",
+                "risk_assessment": "Monitor"
+              },
+              {
+                "id": "AT-12",
+                "access_timing": "Early Morning Access",
+                "trust_score": 0.68,
+                "description": "Very early morning access",
+                "time_category": "Early Morning",
+                "pattern_analysis": "Unusual Hours",
+                "risk_assessment": "Monitor"
+              },
+              {
+                "id": "AT-13",
+                "access_timing": "Holiday Access",
+                "trust_score": 0.65,
+                "description": "Access during holidays",
+                "time_category": "Holiday Pattern",
+                "pattern_analysis": "Unusual Timing",
+                "risk_assessment": "Review"
+              },
+              {
+                "id": "AT-14",
+                "access_timing": "Late Night Access",
+                "trust_score": 0.60,
+                "description": "Access during late night hours",
+                "time_category": "Late Night",
+                "pattern_analysis": "Off-Hours Pattern",
+                "risk_assessment": "Review"
+              },
+              {
+                "id": "AT-15",
+                "access_timing": "Irregular Access Pattern",
+                "trust_score": 0.55,
+                "description": "No consistent access pattern",
+                "time_category": "Irregular Pattern",
+                "pattern_analysis": "Unpredictable Timing",
+                "risk_assessment": "Review"
+              }
+            ]
+          }
+    }
+  }
+}

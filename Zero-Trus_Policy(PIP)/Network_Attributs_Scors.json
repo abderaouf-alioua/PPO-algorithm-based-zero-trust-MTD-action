@@ -1,0 +1,589 @@
+{
+  "framework": {
+    "name": "Network_Attribute_Scors",
+    "description": "Framework evaluates the security posture of communication channels in cloud-native environments",
+    "attributes": {
+      "authentication_security": {
+        "code": "AUTH",
+        "weight": 0.40,
+        "authentication_scenarios": [
+          {
+            "id": "AUTH-01",
+            "method": "OAuth2 + mTLS + Hardware Security Module",
+            "trust_score": 1.00,
+            "description": "Maximum security for critical network communications",
+            "auth_protocol": "OAuth2/mTLS/HSM",
+            "credential_type": "Hardware-backed certificates"
+          },
+          {
+            "id": "AUTH-02",
+            "method": "SPIFFE/SPIRE + mTLS",
+            "trust_score": 0.98,
+            "description": "Service identity framework with mutual TLS",
+            "auth_protocol": "SPIFFE/mTLS",
+            "credential_type": "Workload certificates"
+          },
+          {
+            "id": "AUTH-03",
+            "method": "Network AKA + OAuth2",
+            "trust_score": 0.96,
+            "description": "Network Authentication and Key Agreement with OAuth2",
+            "auth_protocol": "AKA/OAuth2",
+            "credential_type": "SIM-based + JWT"
+          },
+          {
+            "id": "AUTH-04",
+            "method": "Kubernetes Service Account + JWT",
+            "trust_score": 0.94,
+            "description": "Cloud-native service authentication",
+            "auth_protocol": "K8s SA/JWT",
+            "credential_type": "Service account tokens"
+          },
+          {
+            "id": "AUTH-05",
+            "method": "OAuth2 + Client Certificates",
+            "trust_score": 0.92,
+            "description": "Standard enterprise authentication",
+            "auth_protocol": "OAuth2/x.509",
+            "credential_type": "Client certificates"
+          },
+          {
+            "id": "AUTH-06",
+            "method": "OIDC + mTLS",
+            "trust_score": 0.90,
+            "description": "OpenID Connect with mutual TLS",
+            "auth_protocol": "OIDC/mTLS",
+            "credential_type": "Identity tokens + certificates"
+          },
+          {
+            "id": "AUTH-07",
+            "method": "Container Runtime Security + RBAC",
+            "trust_score": 0.88,
+            "description": "Container-level authentication with RBAC",
+            "auth_protocol": "CRI/RBAC",
+            "credential_type": "Container identities"
+          },
+          {
+            "id": "AUTH-08",
+            "method": "API Gateway + JWT",
+            "trust_score": 0.85,
+            "description": "API gateway managed authentication",
+            "auth_protocol": "API-GW/JWT",
+            "credential_type": "JSON Web Tokens"
+          },
+          {
+            "id": "AUTH-09",
+            "method": "Service Mesh Proxy Auth",
+            "trust_score": 0.82,
+            "description": "Envoy proxy authentication",
+            "auth_protocol": "Envoy/mTLS",
+            "credential_type": "Proxy certificates"
+          },
+          {
+            "id": "AUTH-10",
+            "method": "Basic OAuth2 + TLS",
+            "trust_score": 0.80,
+            "description": "Standard OAuth2 implementation",
+            "auth_protocol": "OAuth2/TLS",
+            "credential_type": "Bearer tokens"
+          },
+          {
+            "id": "AUTH-11",
+            "method": "Network Policy + IP Whitelisting",
+            "trust_score": 0.75,
+            "description": "Network-level access control",
+            "auth_protocol": "NetPol/IPTables",
+            "credential_type": "IP-based authentication"
+          },
+          {
+            "id": "AUTH-12",
+            "method": "Simple TLS Client Auth",
+            "trust_score": 0.70,
+            "description": "Basic TLS client authentication",
+            "auth_protocol": "TLS/x.509",
+            "credential_type": "Client certificates"
+          },
+          {
+            "id": "AUTH-13",
+            "method": "API Key Authentication",
+            "trust_score": 0.65,
+            "description": "API key-based access",
+            "auth_protocol": "API-Key/HTTPS",
+            "credential_type": "Static API keys"
+          },
+          {
+            "id": "AUTH-14",
+            "method": "Basic Authentication over HTTPS",
+            "trust_score": 0.60,
+            "description": "Username/password over HTTPS",
+            "auth_protocol": "Basic/HTTPS",
+            "credential_type": "Username/password"
+          },
+          {
+            "id": "AUTH-15",
+            "method": "Container Image Signatures",
+            "trust_score": 0.55,
+            "description": "Image-based trust verification",
+            "auth_protocol": "Cosign/Notary",
+            "credential_type": "Image signatures"
+          },
+          {
+            "id": "AUTH-16",
+            "method": "Network Segmentation Only",
+            "trust_score": 0.50,
+            "description": "Network-level isolation",
+            "auth_protocol": "VLAN/Subnet",
+            "credential_type": "Network boundaries"
+          },
+          {
+            "id": "AUTH-17",
+            "method": "Shared Secret Authentication",
+            "trust_score": 0.45,
+            "description": "Pre-shared key authentication",
+            "auth_protocol": "PSK/HMAC",
+            "credential_type": "Shared secrets"
+          },
+          {
+            "id": "AUTH-18",
+            "method": "IP-based Authentication",
+            "trust_score": 0.40,
+            "description": "Source IP validation only",
+            "auth_protocol": "IP-Auth",
+            "credential_type": "IP addresses"
+          },
+          {
+            "id": "AUTH-19",
+            "method": "Weak Token Authentication",
+            "trust_score": 0.30,
+            "description": "Easily compromised tokens",
+            "auth_protocol": "Weak-JWT",
+            "credential_type": "Weak tokens"
+          },
+          {
+            "id": "AUTH-20",
+            "method": "No Authentication",
+            "trust_score": 0.20,
+            "description": "Unprotected communication",
+            "auth_protocol": "None",
+            "credential_type": "None"
+          },
+          {
+            "id": "AUTH-21",
+            "method": "Compromised Credentials",
+            "trust_score": 0.15,
+            "description": "Known compromised authentication",
+            "auth_protocol": "Compromised",
+            "credential_type": "Leaked credentials"
+          },
+          {
+            "id": "AUTH-22",
+            "method": "Spoofed Authentication",
+            "trust_score": 0.10,
+            "description": "Fraudulent authentication attempts",
+            "auth_protocol": "Spoofed",
+            "credential_type": "Fake credentials"
+          },
+          {
+            "id": "AUTH-23",
+            "method": "Brute Force Attack",
+            "trust_score": 0.05,
+            "description": "Active authentication attacks",
+            "auth_protocol": "Attack",
+            "credential_type": "Attack vectors"
+          },
+          {
+            "id": "AUTH-24",
+            "method": "Authentication Bypass",
+            "trust_score": 0.02,
+            "description": "Complete authentication failure",
+            "auth_protocol": "Bypass",
+            "credential_type": "None"
+          }
+        ]
+      },
+
+        "confidentiality_security": {
+          "code": "CONF",
+          "weight": 0.35,
+          "confidentiality_scenarios": [
+            {
+              "id": "CONF-01",
+              "method": "AES-256-GCM + Perfect Forward Secrecy",
+              "trust_score": 1.00,
+              "description": "Military-grade encryption with PFS",
+              "crypto_protocol": "AES-256-GCM/ECDHE",
+              "key_management": "Hardware Security Module"
+            },
+            {
+              "id": "CONF-02",
+              "method": "ChaCha20-Poly1305 + Ephemeral Keys",
+              "trust_score": 0.98,
+              "description": "Modern AEAD cipher with ephemeral keys",
+              "crypto_protocol": "ChaCha20-Poly1305",
+              "key_management": "Ephemeral key exchange"
+            },
+            {
+              "id": "CONF-03",
+              "method": "TLS 1.3 + AEAD Ciphers",
+              "trust_score": 0.96,
+              "description": "Latest TLS with authenticated encryption",
+              "crypto_protocol": "TLS 1.3/AEAD",
+              "key_management": "TLS key management"
+            },
+            {
+              "id": "CONF-04",
+              "method": "IPSec ESP + AES-256",
+              "trust_score": 0.94,
+              "description": "Network-layer encryption",
+              "crypto_protocol": "IPSec/AES-256",
+              "key_management": "IKEv2 key exchange"
+            },
+            {
+              "id": "CONF-05",
+              "method": "Kubernetes Secrets Encryption at Rest",
+              "trust_score": 0.92,
+              "description": "Encrypted storage of sensitive data",
+              "crypto_protocol": "AES-256/etcd",
+              "key_management": "K8s secret management"
+            },
+            {
+              "id": "CONF-06",
+              "method": "Application-layer Encryption (E2E)",
+              "trust_score": 0.90,
+              "description": "End-to-end application encryption",
+              "crypto_protocol": "AES-256/RSA",
+              "key_management": "Application key management"
+            },
+            {
+              "id": "CONF-07",
+              "method": "Service Mesh Encryption (Istio)",
+              "trust_score": 0.88,
+              "description": "Automatic service-to-service encryption",
+              "crypto_protocol": "mTLS/AES-256",
+              "key_management": "Istio certificate management"
+            },
+            {
+              "id": "CONF-08",
+              "method": "Container Image Encryption",
+              "trust_score": 0.85,
+              "description": "Encrypted container images",
+              "crypto_protocol": "AES-256",
+              "key_management": "Registry encryption"
+            },
+            {
+              "id": "CONF-09",
+              "method": "TLS 1.2 + Strong Ciphers",
+              "trust_score": 0.82,
+              "description": "Standard TLS with strong ciphers",
+              "crypto_protocol": "TLS 1.2/AES-256",
+              "key_management": "Certificate-based"
+            },
+            {
+              "id": "CONF-10",
+              "method": "Database Encryption (TDE)",
+              "trust_score": 0.80,
+              "description": "Transparent database encryption",
+              "crypto_protocol": "AES-256/TDE",
+              "key_management": "Database key management"
+            },
+            {
+              "id": "CONF-11",
+              "method": "VPN Tunneling",
+              "trust_score": 0.75,
+              "description": "Virtual private network encryption",
+              "crypto_protocol": "IPSec/OpenVPN",
+              "key_management": "VPN key management"
+            },
+            {
+              "id": "CONF-12",
+              "method": "HTTPS with Standard Ciphers",
+              "trust_score": 0.70,
+              "description": "Basic HTTPS encryption",
+              "crypto_protocol": "TLS 1.2/AES-128",
+              "key_management": "Standard certificates"
+            },
+            {
+              "id": "CONF-13",
+              "method": "Message Queue Encryption",
+              "trust_score": 0.65,
+              "description": "Encrypted messaging systems",
+              "crypto_protocol": "AES-256/RabbitMQ",
+              "key_management": "Queue-specific keys"
+            },
+            {
+              "id": "CONF-14",
+              "method": "Weak TLS Configuration",
+              "trust_score": 0.60,
+              "description": "TLS with weak cipher suites",
+              "crypto_protocol": "TLS 1.1/RC4",
+              "key_management": "Weak key management"
+            },
+            {
+              "id": "CONF-15",
+              "method": "Basic Container Security",
+              "trust_score": 0.55,
+              "description": "Standard container isolation",
+              "crypto_protocol": "Namespace isolation",
+              "key_management": "Runtime security"
+            },
+            {
+              "id": "CONF-16",
+              "method": "Network Segmentation",
+              "trust_score": 0.50,
+              "description": "Network-level confidentiality",
+              "crypto_protocol": "VLAN/Subnets",
+              "key_management": "Network access control"
+            },
+            {
+              "id": "CONF-17",
+              "method": "Obfuscation Only",
+              "trust_score": 0.40,
+              "description": "Simple data obfuscation",
+              "crypto_protocol": "Base64/ROT13",
+              "key_management": "No key management"
+            },
+            {
+              "id": "CONF-18",
+              "method": "Deprecated Encryption",
+              "trust_score": 0.30,
+              "description": "Outdated encryption methods",
+              "crypto_protocol": "DES/MD5",
+              "key_management": "Legacy keys"
+            },
+            {
+              "id": "CONF-19",
+              "method": "Unencrypted with Access Control",
+              "trust_score": 0.25,
+              "description": "No encryption, basic access control",
+              "crypto_protocol": "None",
+              "key_management": "Authentication only"
+            },
+            {
+              "id": "CONF-20",
+              "method": "Plain Text Communication",
+              "trust_score": 0.15,
+              "description": "No confidentiality protection",
+              "crypto_protocol": "None",
+              "key_management": "None"
+            },
+            {
+              "id": "CONF-21",
+              "method": "Compromised Encryption Keys",
+              "trust_score": 0.10,
+              "description": "Known compromised encryption",
+              "crypto_protocol": "Various",
+              "key_management": "Compromised keys"
+            },
+            {
+              "id": "CONF-22",
+              "method": "Broken Encryption Implementation",
+              "trust_score": 0.05,
+              "description": "Faulty encryption implementation",
+              "crypto_protocol": "Broken",
+              "key_management": "Implementation flaws"
+            },
+            {
+              "id": "CONF-23",
+              "method": "Intentionally Unprotected",
+              "trust_score": 0.02,
+              "description": "Deliberately exposed communication",
+              "crypto_protocol": "None",
+              "key_management": "None"
+            }
+          ]
+        },
+        "integrity_security": {
+          "code": "INT",
+          "weight": 0.25,
+          "integrity_scenarios": [
+            {
+              "id": "INT-01",
+              "method": "Digital Signatures + Blockchain Verification",
+              "trust_score": 1.00,
+              "description": "Cryptographic signatures with immutable verification",
+              "integrity_method": "ECDSA/Blockchain",
+              "validation_level": "Immutable ledger"
+            },
+            {
+              "id": "INT-02",
+              "method": "HMAC-SHA3 + Message Authentication",
+              "trust_score": 0.98,
+              "description": "Strong hash-based message authentication",
+              "integrity_method": "HMAC-SHA3",
+              "validation_level": "Cryptographic MAC"
+            },
+            {
+              "id": "INT-03",
+              "method": "Container Image Signing (Cosign)",
+              "trust_score": 0.96,
+              "description": "Cryptographically signed container images",
+              "integrity_method": "Cosign/Sigstore",
+              "validation_level": "Supply chain security"
+            },
+            {
+              "id": "INT-04",
+              "method": "Git Commit Signing + CI/CD Verification",
+              "trust_score": 0.94,
+              "description": "Signed commits with pipeline verification",
+              "integrity_method": "GPG/SHA-256",
+              "validation_level": "Code integrity"
+            },
+            {
+              "id": "INT-05",
+              "method": "TLS 1.3 with Integrity Protection",
+              "trust_score": 0.92,
+              "description": "Built-in TLS integrity verification",
+              "integrity_method": "TLS 1.3/AEAD",
+              "validation_level": "Transport layer integrity"
+            },
+            {
+              "id": "INT-06",
+              "method": "Kubernetes Admission Controllers",
+              "trust_score": 0.90,
+              "description": "Policy-based integrity enforcement",
+              "integrity_method": "OPA/Gatekeeper",
+              "validation_level": "Policy validation"
+            },
+            {
+              "id": "INT-07",
+              "method": "Message Queue Integrity (AMQP)",
+              "trust_score": 0.88,
+              "description": "Message-level integrity verification",
+              "integrity_method": "AMQP/SHA-256",
+              "validation_level": "Message validation"
+            },
+            {
+              "id": "INT-08",
+              "method": "Database Transaction Integrity",
+              "trust_score": 0.85,
+              "description": "ACID transaction guarantees",
+              "integrity_method": "ACID/Checksums",
+              "validation_level": "Database-level integrity"
+            },
+            {
+              "id": "INT-09",
+              "method": "API Request Signing",
+              "trust_score": 0.82,
+              "description": "Signed API requests and responses",
+              "integrity_method": "HMAC/JWT",
+              "validation_level": "Request validation"
+            },
+            {
+              "id": "INT-10",
+              "method": "Service Mesh Policy Enforcement",
+              "trust_score": 0.80,
+              "description": "Automatic integrity policy enforcement",
+              "integrity_method": "Istio/Envoy",
+              "validation_level": "Proxy-level validation"
+            },
+            {
+              "id": "INT-11",
+              "method": "Checksum Verification",
+              "trust_score": 0.75,
+              "description": "File and message checksum validation",
+              "integrity_method": "SHA-256/MD5",
+              "validation_level": "Basic validation"
+            },
+            {
+              "id": "INT-12",
+              "method": "Network Protocol Integrity",
+              "trust_score": 0.70,
+              "description": "Protocol-level integrity checks",
+              "integrity_method": "TCP/UDP checksums",
+              "validation_level": "Network layer"
+            },
+            {
+              "id": "INT-13",
+              "method": "Container Runtime Security",
+              "trust_score": 0.65,
+              "description": "Runtime integrity monitoring",
+              "integrity_method": "Falco/AppArmor",
+              "validation_level": "Runtime validation"
+            },
+            {
+              "id": "INT-14",
+              "method": "Basic Input Validation",
+              "trust_score": 0.60,
+              "description": "Application-level input validation",
+              "integrity_method": "Regex/Sanitization",
+              "validation_level": "Input filtering"
+            },
+            {
+              "id": "INT-15",
+              "method": "Timestamp Verification",
+              "trust_score": 0.55,
+              "description": "Time-based integrity verification",
+              "integrity_method": "NTP/Timestamps",
+              "validation_level": "Temporal validation"
+            },
+            {
+              "id": "INT-16",
+              "method": "Simple Hash Verification",
+              "trust_score": 0.50,
+              "description": "Basic hash-based verification",
+              "integrity_method": "MD5/SHA-1",
+              "validation_level": "Weak validation"
+            },
+            {
+              "id": "INT-17",
+              "method": "Access Logging Only",
+              "trust_score": 0.40,
+              "description": "Audit trail without active protection",
+              "integrity_method": "Syslog/Events",
+              "validation_level": "Passive monitoring"
+            },
+            {
+              "id": "INT-18",
+              "method": "Best Effort Validation",
+              "trust_score": 0.30,
+              "description": "Minimal integrity checking",
+              "integrity_method": "Basic validation",
+              "validation_level": "Limited checking"
+            },
+            {
+              "id": "INT-19",
+              "method": "No Integrity Protection",
+              "trust_score": 0.20,
+              "description": "No integrity verification",
+              "integrity_method": "None",
+              "validation_level": "None"
+            },
+            {
+              "id": "INT-20",
+              "method": "Compromised Integrity",
+              "trust_score": 0.15,
+              "description": "Known integrity violations",
+              "integrity_method": "Tampered",
+              "validation_level": "Validation bypassed"
+            },
+            {
+              "id": "INT-21",
+              "method": "Active Tampering Detected",
+              "trust_score": 0.10,
+              "description": "Evidence of active tampering",
+              "integrity_method": "Attack detected",
+              "validation_level": "Integrity breach"
+            },
+            {
+              "id": "INT-22",
+              "method": "Data Corruption",
+              "trust_score": 0.05,
+              "description": "Systematic data corruption",
+              "integrity_method": "Corrupted",
+              "validation_level": "System failure"
+            },
+            {
+              "id": "INT-23",
+              "method": "Integrity Bypass",
+              "trust_score": 0.02,
+              "description": "Complete integrity protection bypass",
+              "integrity_method": "Bypassed",
+              "validation_level": "No protection"
+            }
+          ]
+        }
+      }
+    }
+    }
+
+

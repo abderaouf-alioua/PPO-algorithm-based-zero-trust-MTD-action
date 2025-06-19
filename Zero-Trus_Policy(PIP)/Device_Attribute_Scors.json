@@ -1,0 +1,1761 @@
+{
+  "framework": {
+    "name": "Device_Attribute_Scors",
+    "description": "Comprehensive Zero Trust scoring for 5G cloud-native environments",
+    "version": "1.0",
+    "attributes": {
+      "connection_security": {
+        "code": "CS",
+        "weight": 0.12,
+        "scenarios": [
+          {
+            "id": "CS-01",
+            "security_protocol": "5G SA mTLS + IPSec",
+            "trust_score": 1.00,
+            "description": "Full 5G Standalone with mutual TLS and IPSec",
+            "encryption_level": "AES-256 GCM",
+            "5g_integration": "Native 5G SA",
+            "zero_trust_status": "Fully Trusted"
+          },
+          {
+            "id": "CS-02",
+            "security_protocol": "Network Slice + TLS 1.3",
+            "trust_score": 0.98,
+            "description": "Dedicated 5G network slice with TLS 1.3",
+            "encryption_level": "AES-256",
+            "5g_integration": "Dedicated Slice",
+            "zero_trust_status": "Fully Trusted"
+          },
+          {
+            "id": "CS-03",
+            "security_protocol": "5G Edge mTLS",
+            "trust_score": 0.96,
+            "description": "Multi-access Edge Computing with mTLS",
+            "encryption_level": "AES-256",
+            "5g_integration": "Edge Native",
+            "zero_trust_status": "Trusted"
+          },
+          {
+            "id": "CS-04",
+            "security_protocol": "Container Mesh + 5G",
+            "trust_score": 0.94,
+            "description": "Service mesh over 5G with certificate rotation",
+            "encryption_level": "AES-256",
+            "5g_integration": "Container Native",
+            "zero_trust_status": "Trusted"
+          },
+          {
+            "id": "CS-05",
+            "security_protocol": "5G NSA + VPN",
+            "trust_score": 0.92,
+            "description": "Non-Standalone 5G with enterprise VPN overlay",
+            "encryption_level": "AES-256",
+            "5g_integration": "5G NSA",
+            "zero_trust_status": "Trusted"
+          },
+          {
+            "id": "CS-06",
+            "security_protocol": "Kubernetes TLS + 5G",
+            "trust_score": 0.90,
+            "description": "K8s cluster communication over 5G",
+            "encryption_level": "AES-256",
+            "5g_integration": "K8s Native",
+            "zero_trust_status": "Acceptable"
+          },
+          {
+            "id": "CS-07",
+            "security_protocol": "gRPC + TLS 1.3",
+            "trust_score": 0.88,
+            "description": "Cloud-native gRPC with strong TLS",
+            "encryption_level": "AES-256",
+            "5g_integration": "Cloud Native",
+            "zero_trust_status": "Acceptable"
+          },
+          {
+            "id": "CS-08",
+            "security_protocol": "HTTPS/2 + HSTS",
+            "trust_score": 0.85,
+            "description": "HTTP/2 with strict transport security",
+            "encryption_level": "AES-256",
+            "5g_integration": "Web Native",
+            "zero_trust_status": "Acceptable"
+          },
+          {
+            "id": "CS-09",
+            "security_protocol": "WebSocket Secure",
+            "trust_score": 0.82,
+            "description": "WSS for real-time cloud communication",
+            "encryption_level": "AES-256",
+            "5g_integration": "Real-time",
+            "zero_trust_status": "Monitor"
+          },
+          {
+            "id": "CS-10",
+            "security_protocol": "Standard HTTPS",
+            "trust_score": 0.80,
+            "description": "Basic HTTPS with valid certificates",
+            "encryption_level": "AES-128/256",
+            "5g_integration": "Standard Web",
+            "zero_trust_status": "Monitor"
+          },
+          {
+            "id": "CS-11",
+            "security_protocol": "Self-Signed TLS",
+            "trust_score": 0.75,
+            "description": "TLS with self-signed certificates",
+            "encryption_level": "AES-128/256",
+            "5g_integration": "Internal",
+            "zero_trust_status": "Monitor"
+          },
+          {
+            "id": "CS-12",
+            "security_protocol": "4G LTE Fallback",
+            "trust_score": 0.20,
+            "description": "Fallback to 4G with VPN",
+            "encryption_level": "AES-128",
+            "5g_integration": "Legacy Mobile",
+            "zero_trust_status": "Review"
+          },
+          {
+            "id": "CS-13",
+            "security_protocol": "Basic VPN",
+            "trust_score": 0.30,
+            "description": "Standard VPN without 5G optimization",
+            "encryption_level": "AES-128",
+            "5g_integration": "Traditional",
+            "zero_trust_status": "Review"
+          },
+          {
+            "id": "CS-14",
+            "security_protocol": "WiFi WPA3",
+            "trust_score": 0.40,
+            "description": "WiFi 6/WPA3 connection",
+            "encryption_level": "AES-128",
+            "5g_integration": "WiFi Native",
+            "zero_trust_status": "Review"
+          },
+          {
+            "id": "CS-15",
+            "security_protocol": "Deprecated TLS",
+            "trust_score": 0.20,
+            "description": "TLS 1.1/1.2 with weak ciphers",
+            "encryption_level": "Weak Encryption",
+            "5g_integration": "Legacy",
+            "zero_trust_status": "Alert"
+          },
+          {
+            "id": "CS-16",
+            "security_protocol": "Unencrypted 5G Test",
+            "trust_score": 0.10,
+            "description": "5G test networks without encryption",
+            "encryption_level": "No Encryption",
+            "5g_integration": "Test Mode",
+            "zero_trust_status": "Block"
+          },
+          {
+            "id": "CS-17",
+            "security_protocol": "HTTP Only",
+            "trust_score": 0.20,
+            "description": "Plain HTTP without encryption",
+            "encryption_level": "No Encryption",
+            "5g_integration": "Unsecured",
+            "zero_trust_status": "Block"
+          },
+          {
+            "id": "CS-18",
+            "security_protocol": "Open WiFi",
+            "trust_score": 0.10,
+            "description": "Unencrypted WiFi connection",
+            "encryption_level": "No Encryption",
+            "5g_integration": "Public",
+            "zero_trust_status": "Block"
+          },
+          {
+            "id": "CS-19",
+            "security_protocol": "Compromised Channel",
+            "trust_score": 0.05,
+            "description": "Evidence of channel compromise",
+            "encryption_level": "Compromised",
+            "5g_integration": "Security Risk",
+            "zero_trust_status": "Block"
+          }
+        ]
+      },
+      "software_patch_level": {
+        "code": "SPL",
+        "weight": 0.10,
+        "scenarios": [
+          {
+            "id": "SPL-01",
+            "patch_status": "Auto-Updated Container",
+            "trust_score": 1.00,
+            "description": "Container with automatic security updates",
+            "update_currency": "Current Day",
+            "5g_compatibility": "5G Optimized",
+            "risk_level": "Minimal"
+          },
+          {
+            "id": "SPL-02",
+            "patch_status": "Latest 5G Stack",
+            "trust_score": 0.98,
+            "description": "Current 5G software stack and drivers",
+            "update_currency": "< 24 hours",
+            "5g_compatibility": "Native 5G",
+            "risk_level": "Minimal"
+          },
+          {
+            "id": "SPL-03",
+            "patch_status": "K8s Latest Stable",
+            "trust_score": 0.96,
+            "description": "Latest stable Kubernetes version",
+            "update_currency": "< 48 hours",
+            "5g_compatibility": "Container Ready",
+            "risk_level": "Low"
+          },
+          {
+            "id": "SPL-04",
+            "patch_status": "Cloud Native Current",
+            "trust_score": 0.94,
+            "description": "Current cloud-native runtime stack",
+            "update_currency": "< 72 hours",
+            "5g_compatibility": "Cloud Optimized",
+            "risk_level": "Low"
+          },
+          {
+            "id": "SPL-05",
+            "patch_status": "Weekly Patched",
+            "trust_score": 0.92,
+            "description": "Regular weekly patch cycle",
+            "update_currency": "< 1 week",
+            "5g_compatibility": "Maintained",
+            "risk_level": "Low"
+          },
+          {
+            "id": "SPL-06",
+            "patch_status": "Monthly Critical",
+            "trust_score": 0.88,
+            "description": "Monthly patches, critical only",
+            "update_currency": "< 1 month",
+            "5g_compatibility": "Standard",
+            "risk_level": "Moderate"
+          },
+          {
+            "id": "SPL-07",
+            "patch_status": "Quarterly Standard",
+            "trust_score": 0.85,
+            "description": "Standard quarterly patch cycle",
+            "update_currency": "< 3 months",
+            "5g_compatibility": "Standard",
+            "risk_level": "Moderate"
+          },
+          {
+            "id": "SPL-08",
+            "patch_status": "Legacy 5G Stack",
+            "trust_score": 0.80,
+            "description": "Older but supported 5G stack",
+            "update_currency": "< 6 months",
+            "5g_compatibility": "Legacy 5G",
+            "risk_level": "Moderate"
+          },
+          {
+            "id": "SPL-09",
+            "patch_status": "Semi-Annual",
+            "trust_score": 0.75,
+            "description": "Bi-annual update cycle",
+            "update_currency": "< 6 months",
+            "5g_compatibility": "Enterprise",
+            "risk_level": "Monitor"
+          },
+          {
+            "id": "SPL-10",
+            "patch_status": "Annual Updates",
+            "trust_score": 0.70,
+            "description": "Annual maintenance cycle",
+            "update_currency": "< 1 year",
+            "5g_compatibility": "Traditional",
+            "risk_level": "Monitor"
+          },
+          {
+            "id": "SPL-11",
+            "patch_status": "Delayed Critical",
+            "trust_score": 0.60,
+            "description": "Critical patches delayed > 30 days",
+            "update_currency": "> 30 days",
+            "5g_compatibility": "Behind",
+            "risk_level": "Elevated"
+          },
+          {
+            "id": "SPL-12",
+            "patch_status": "Missing Security",
+            "trust_score": 0.50,
+            "description": "Missing recent security patches",
+            "update_currency": "> 60 days",
+            "5g_compatibility": "Vulnerable",
+            "risk_level": "High"
+          },
+          {
+            "id": "SPL-13",
+            "patch_status": "EOL Software",
+            "trust_score": 0.40,
+            "description": "End-of-life software components",
+            "update_currency": "EOL",
+            "5g_compatibility": "Unsupported",
+            "risk_level": "High"
+          },
+          {
+            "id": "SPL-14",
+            "patch_status": "Vulnerable Stack",
+            "trust_score": 0.25,
+            "description": "Known vulnerable components",
+            "update_currency": "Active CVEs",
+            "5g_compatibility": "Compromised",
+            "risk_level": "Critical"
+          },
+          {
+            "id": "SPL-15",
+            "patch_status": "Malware Present",
+            "trust_score": 0.10,
+            "description": "Detected malware or rootkits",
+            "update_currency": "Infected",
+            "5g_compatibility": "Compromised",
+            "risk_level": "Critical"
+          }
+        ]
+      },
+      "system_patch_level": {
+        "code": "SYPL",
+        "weight": 0.09,
+        "scenarios": [
+          {
+            "id": "SYPL-01",
+            "os_patch_status": "Immutable OS Current",
+            "trust_score": 1.00,
+            "description": "Immutable OS with latest security updates",
+            "kernel_version": "Latest Kernel",
+            "container_runtime": "Latest Runtime",
+            "security_posture": "Hardened"
+          },
+          {
+            "id": "SYPL-02",
+            "os_patch_status": "Container OS Optimized",
+            "trust_score": 0.98,
+            "description": "Container-optimized OS, fully patched",
+            "kernel_version": "Container Kernel",
+            "container_runtime": "Optimized",
+            "security_posture": "Secure"
+          },
+          {
+            "id": "SYPL-03",
+            "os_patch_status": "5G Edge OS Current",
+            "trust_score": 0.96,
+            "description": "Edge-optimized OS with 5G drivers",
+            "kernel_version": "Edge Kernel",
+            "container_runtime": "Edge Runtime",
+            "security_posture": "Secure"
+          },
+          {
+            "id": "SYPL-04",
+            "os_patch_status": "Linux LTS Current",
+            "trust_score": 0.94,
+            "description": "Latest LTS kernel with all patches",
+            "kernel_version": "LTS Current",
+            "container_runtime": "Standard",
+            "security_posture": "Secure"
+          },
+          {
+            "id": "SYPL-05",
+            "os_patch_status": "Cloud OS Updated",
+            "trust_score": 0.92,
+            "description": "Cloud provider OS, auto-updated",
+            "kernel_version": "Cloud Kernel",
+            "container_runtime": "Cloud Runtime",
+            "security_posture": "Maintained"
+          },
+          {
+            "id": "SYPL-06",
+            "os_patch_status": "Enterprise Standard",
+            "trust_score": 0.88,
+            "description": "Enterprise OS with monthly patches",
+            "kernel_version": "Stable Kernel",
+            "container_runtime": "Enterprise",
+            "security_posture": "Standard"
+          },
+          {
+            "id": "SYPL-07",
+            "os_patch_status": "Server Core Updated",
+            "trust_score": 0.85,
+            "description": "Windows Server Core, current patches",
+            "kernel_version": "Windows Current",
+            "container_runtime": "Windows Runtime",
+            "security_posture": "Standard"
+          },
+          {
+            "id": "SYPL-08",
+            "os_patch_status": "Embedded 5G Current",
+            "trust_score": 0.82,
+            "description": "Embedded 5G device OS, updated",
+            "kernel_version": "Embedded Kernel",
+            "container_runtime": "Minimal Runtime",
+            "security_posture": "Acceptable"
+          },
+          {
+            "id": "SYPL-09",
+            "os_patch_status": "Standard Desktop",
+            "trust_score": 0.80,
+            "description": "Standard desktop OS, regularly updated",
+            "kernel_version": "Desktop Kernel",
+            "container_runtime": "Standard Runtime",
+            "security_posture": "Acceptable"
+          },
+          {
+            "id": "SYPL-10",
+            "os_patch_status": "Legacy Enterprise",
+            "trust_score": 0.75,
+            "description": "Older enterprise OS, supported",
+            "kernel_version": "Legacy Kernel",
+            "container_runtime": "Legacy Runtime",
+            "security_posture": "Monitor"
+          },
+          {
+            "id": "SYPL-11",
+            "os_patch_status": "Delayed Patches",
+            "trust_score": 0.65,
+            "description": "System patches delayed > 30 days",
+            "kernel_version": "Behind Kernel",
+            "container_runtime": "Behind Runtime",
+            "security_posture": "Review"
+          },
+          {
+            "id": "SYPL-12",
+            "os_patch_status": "Missing Critical",
+            "trust_score": 0.50,
+            "description": "Missing critical OS patches",
+            "kernel_version": "Vulnerable Kernel",
+            "container_runtime": "Outdated",
+            "security_posture": "High Risk"
+          },
+          {
+            "id": "SYPL-13",
+            "os_patch_status": "EOL Operating System",
+            "trust_score": 0.35,
+            "description": "End-of-life operating system",
+            "kernel_version": "EOL Kernel",
+            "container_runtime": "EOL Runtime",
+            "security_posture": "Critical"
+          },
+          {
+            "id": "SYPL-14",
+            "os_patch_status": "Unpatched Vulnerabilities",
+            "trust_score": 0.20,
+            "description": "Known unpatched vulnerabilities",
+            "kernel_version": "Vulnerable",
+            "container_runtime": "Compromised",
+            "security_posture": "Critical"
+          },
+          {
+            "id": "SYPL-15",
+            "os_patch_status": "Rootkit/Compromise",
+            "trust_score": 0.05,
+            "description": "Evidence of system compromise",
+            "kernel_version": "Compromised",
+            "container_runtime": "Infected",
+            "security_posture": "Block"
+          }
+        ]
+      },
+      "device_type": {
+        "code": "DT",
+        "weight": 0.08,
+        "scenarios": [
+          {
+            "id": "DT-01",
+            "device_category": "5G Edge Server",
+            "trust_score": 1.00,
+            "description": "Dedicated 5G edge computing server",
+            "5g_capability": "Native 5G",
+            "management_model": "Full Management",
+            "security_profile": "Maximum"
+          },
+          {
+            "id": "DT-02",
+            "device_category": "Container Host Cluster",
+            "trust_score": 0.98,
+            "description": "Kubernetes cluster node",
+            "5g_capability": "5G Optimized",
+            "management_model": "Orchestrated",
+            "security_profile": "High"
+          },
+          {
+            "id": "DT-03",
+            "device_category": "Cloud Native Workstation",
+            "trust_score": 0.96,
+            "description": "Cloud-native development workstation",
+            "5g_capability": "5G Ready",
+            "management_model": "Developer Managed",
+            "security_profile": "High"
+          },
+          {
+            "id": "DT-04",
+            "device_category": "5G IoT Gateway",
+            "trust_score": 0.94,
+            "description": "Industrial 5G IoT gateway",
+            "5g_capability": "5G Native",
+            "management_model": "IoT Managed",
+            "security_profile": "High"
+          },
+          {
+            "id": "DT-05",
+            "device_category": "Enterprise 5G Device",
+            "trust_score": 0.92,
+            "description": "Corporate 5G-enabled device",
+            "5g_capability": "5G Capable",
+            "management_model": "Enterprise Managed",
+            "security_profile": "Standard"
+          },
+          {
+            "id": "DT-06",
+            "device_category": "Virtual Machine Host",
+            "trust_score": 0.90,
+            "description": "Hypervisor host system",
+            "5g_capability": "5G Capable",
+            "management_model": "Virtualization",
+            "security_profile": "Standard"
+          },
+          {
+            "id": "DT-07",
+            "device_category": "Microservice Instance",
+            "trust_score": 0.88,
+            "description": "Containerized microservice",
+            "5g_capability": "Container Native",
+            "management_model": "Auto-Scaled",
+            "security_profile": "Standard"
+          },
+          {
+            "id": "DT-08",
+            "device_category": "Development Container",
+            "trust_score": 0.85,
+            "description": "Development environment container",
+            "5g_capability": "Cloud Native",
+            "management_model": "Developer",
+            "security_profile": "Acceptable"
+          },
+          {
+            "id": "DT-09",
+            "device_category": "5G Mobile Device",
+            "trust_score": 0.82,
+            "description": "5G smartphone/tablet",
+            "5g_capability": "5G Native",
+            "management_model": "MDM Managed",
+            "security_profile": "Acceptable"
+          },
+          {
+            "id": "DT-10",
+            "device_category": "Edge Computing Node",
+            "trust_score": 0.80,
+            "description": "Multi-access edge computing node",
+            "5g_capability": "Edge Optimized",
+            "management_model": "Edge Managed",
+            "security_profile": "Acceptable"
+          },
+          {
+            "id": "DT-11",
+            "device_category": "Legacy Server",
+            "trust_score": 0.75,
+            "description": "Traditional server with 5G adapter",
+            "5g_capability": "5G Adapter",
+            "management_model": "Legacy Managed",
+            "security_profile": "Monitor"
+          },
+          {
+            "id": "DT-12",
+            "device_category": "BYOD 5G Device",
+            "trust_score": 0.70,
+            "description": "Personal 5G device, enrolled",
+            "5g_capability": "5G Capable",
+            "management_model": "BYOD Policy",
+            "security_profile": "Monitor"
+          },
+          {
+            "id": "DT-13",
+            "device_category": "4G Fallback Device",
+            "trust_score": 0.65,
+            "description": "Device using 4G fallback",
+            "5g_capability": "4G Only",
+            "management_model": "Standard",
+            "security_profile": "Review"
+          },
+          {
+            "id": "DT-14",
+            "device_category": "IoT Sensor Network",
+            "trust_score": 0.60,
+            "description": "Low-power IoT sensor cluster",
+            "5g_capability": "LoRa/NB-IoT",
+            "management_model": "IoT Platform",
+            "security_profile": "Review"
+          },
+          {
+            "id": "DT-15",
+            "device_category": "Unknown 5G Device",
+            "trust_score": 0.45,
+            "description": "Unrecognized 5G device type",
+            "5g_capability": "5G Unknown",
+            "management_model": "Unmanaged",
+            "security_profile": "Alert"
+          },
+          {
+            "id": "DT-16",
+            "device_category": "Legacy IoT Device",
+            "trust_score": 0.35,
+            "description": "Pre-5G IoT device",
+            "5g_capability": "No 5G",
+            "management_model": "Minimal",
+            "security_profile": "High Risk"
+          },
+          {
+            "id": "DT-17",
+            "device_category": "Unmanaged Device",
+            "trust_score": 0.25,
+            "description": "Unmanaged network device",
+            "5g_capability": "Unknown",
+            "management_model": "None",
+            "security_profile": "Block"
+          },
+          {
+            "id": "DT-18",
+            "device_category": "Compromised Device",
+            "trust_score": 0.10,
+            "description": "Device showing compromise signs",
+            "5g_capability": "Any",
+            "management_model": "Compromised",
+            "security_profile": "Block"
+          }
+        ]
+      },
+      "device_fingerprint": {
+        "code": "DF",
+        "weight": 0.07,
+        "scenarios": [
+          {
+            "id": "DF-01",
+            "fingerprint_match": "Hardware TPM Verified",
+            "trust_score": 1.00,
+            "description": "TPM-based hardware attestation",
+            "hardware_id": "TPM 2.0 Match",
+            "software_stack": "Verified Stack",
+            "attestation": "Hardware Attested"
+          },
+          {
+            "id": "DF-02",
+            "fingerprint_match": "5G IMEI + Hardware",
+            "trust_score": 0.98,
+            "description": "5G device IMEI with hardware match",
+            "hardware_id": "IMEI Verified",
+            "software_stack": "5G Stack Match",
+            "attestation": "Cellular Verified"
+          },
+          {
+            "id": "DF-03",
+            "fingerprint_match": "Container Image Signed",
+            "trust_score": 0.96,
+            "description": "Cryptographically signed container",
+            "hardware_id": "Container Hash",
+            "software_stack": "Signed Image",
+            "attestation": "Image Verified"
+          },
+          {
+            "id": "DF-04",
+            "fingerprint_match": "K8s Node Certified",
+            "trust_score": 0.94,
+            "description": "Kubernetes node with attestation",
+            "hardware_id": "Node Certificate",
+            "software_stack": "K8s Verified",
+            "attestation": "Platform Certified"
+          },
+          {
+            "id": "DF-05",
+            "fingerprint_match": "Cloud Instance Verified",
+            "trust_score": 0.92,
+            "description": "Cloud provider instance attestation",
+            "hardware_id": "Instance ID",
+            "software_stack": "Cloud Verified",
+            "attestation": "Cloud Attested"
+          },
+          {
+            "id": "DF-06",
+            "fingerprint_match": "MAC + Certificate",
+            "trust_score": 0.90,
+            "description": "MAC address with device certificate",
+            "hardware_id": "MAC Verified",
+            "software_stack": "Cert Match",
+            "attestation": "Certificate Based"
+          },
+          {
+            "id": "DF-07",
+            "fingerprint_match": "BIOS/UEFI Match",
+            "trust_score": 0.88,
+            "description": "BIOS/UEFI fingerprint match",
+            "hardware_id": "BIOS Hash",
+            "software_stack": "Firmware Match",
+            "attestation": "Firmware Verified"
+          },
+          {
+            "id": "DF-08",
+            "fingerprint_match": "Software Fingerprint",
+            "trust_score": 0.85,
+            "description": "Software stack fingerprint",
+            "hardware_id": "SW Hash",
+            "software_stack": "Stack Match",
+            "attestation": "Software Based"
+          },
+          {
+            "id": "DF-09",
+            "fingerprint_match": "Behavioral Match",
+            "trust_score": 0.82,
+            "description": "Device behavior fingerprint",
+            "hardware_id": "Behavior Pattern",
+            "software_stack": "Usage Match",
+            "attestation": "Behavior Based"
+          },
+          {
+            "id": "DF-10",
+            "fingerprint_match": "Network Stack Match",
+            "trust_score": 0.80,
+            "description": "Network stack characteristics",
+            "hardware_id": "Network FP",
+            "software_stack": "Protocol Match",
+            "attestation": "Network Based"
+          },
+          {
+            "id": "DF-11",
+            "fingerprint_match": "Partial Hardware Match",
+            "trust_score": 0.75,
+            "description": "Some hardware characteristics match",
+            "hardware_id": "Partial HW",
+            "software_stack": "Partial Match",
+            "attestation": "Limited"
+          },
+          {
+            "id": "DF-12",
+            "fingerprint_match": "Browser Fingerprint",
+            "trust_score": 0.70,
+            "description": "Web browser characteristics",
+            "hardware_id": "Browser FP",
+            "software_stack": "Browser Match",
+            "attestation": "Browser Based"
+          },
+          {
+            "id": "DF-13",
+            "fingerprint_match": "Basic Device ID",
+            "trust_score": 0.65,
+            "description": "Simple device identifier",
+            "hardware_id": "Basic ID",
+            "software_stack": "Basic Match",
+            "attestation": "Minimal"
+          },
+          {
+            "id": "DF-14",
+            "fingerprint_match": "Inconsistent Profile",
+            "trust_score": 0.50,
+            "description": "Fingerprint inconsistencies",
+            "hardware_id": "Mismatch",
+            "software_stack": "Profile Drift",
+            "attestation": "Suspicious"
+          },
+          {
+            "id": "DF-15",
+            "fingerprint_match": "Spoofed Fingerprint",
+            "trust_score": 0.30,
+            "description": "Evidence of fingerprint spoofing",
+            "hardware_id": "Spoofed",
+            "software_stack": "Fake Profile",
+            "attestation": "Deceptive"
+          },
+          {
+            "id": "DF-16",
+            "fingerprint_match": "No Fingerprint",
+            "trust_score": 0.20,
+            "description": "Unable to fingerprint device",
+            "hardware_id": "None",
+            "software_stack": "Unknown",
+            "attestation": "Unidentifiable"
+          },
+          {
+            "id": "DF-17",
+            "fingerprint_match": "Malicious Fingerprint",
+            "trust_score": 0.10,
+            "description": "Known malicious device\nsignature",
+            "hardware_id": "Malicious",
+            "software_stack": "Attack Profile",
+            "attestation": "Malicious"
+         }
+        ]
+      },
+      "location_context": {
+    "weight": 0.06,
+    "scenarios": [
+      {
+        "scenario": "LC-01",
+        "location_type": "5G Private Network",
+        "trust_score": 1.00,
+        "description": "Private 5G network campus",
+        "geographic_zone": "Corporate Campus",
+        "network_context": "Private 5G",
+        "risk_assessment": "Minimal Risk"
+      },
+      {
+        "scenario": "LC-02",
+        "location_type": "Edge Data Center",
+        "trust_score": 0.98,
+        "description": "Multi-access edge computing facility",
+        "geographic_zone": "Edge Location",
+        "network_context": "MEC Network",
+        "risk_assessment": "Low Risk"
+      },
+      {
+        "scenario": "LC-03",
+        "location_type": "Corporate 5G Zone",
+        "trust_score": 0.96,
+        "description": "Corporate building with 5G",
+        "geographic_zone": "Corporate Zone",
+        "network_context": "Enterprise 5G",
+        "risk_assessment": "Low Risk"
+      },
+      {
+        "scenario": "LC-04",
+        "location_type": "Cloud Region Home",
+        "trust_score": 0.94,
+        "description": "Primary cloud region",
+        "geographic_zone": "Home Region",
+        "network_context": "Cloud Provider",
+        "risk_assessment": "Low Risk"
+      },
+      {
+        "scenario": "LC-05",
+        "location_type": "5G Campus Network",
+        "trust_score": 0.92,
+        "description": "University/enterprise campus 5G",
+        "geographic_zone": "Campus Zone",
+        "network_context": "Campus 5G",
+        "risk_assessment": "Low Risk"
+      },
+      {
+        "scenario": "LC-06",
+        "location_type": "Approved Remote Site",
+        "trust_score": 0.88,
+        "description": "Approved work-from-home location",
+        "geographic_zone": "Home Office",
+        "network_context": "Residential 5G",
+        "risk_assessment": "Acceptable"
+      },
+      {
+        "scenario": "LC-07",
+        "location_type": "Partner 5G Network",
+        "trust_score": 0.85,
+        "description": "Trusted partner 5G infrastructure",
+        "geographic_zone": "Partner Site",
+        "network_context": "Partner 5G",
+        "risk_assessment": "Acceptable"
+      },
+      {
+        "scenario": "LC-08",
+        "location_type": "Public 5G - Business",
+        "trust_score": 0.80,
+        "description": "Commercial 5G in business district",
+        "geographic_zone": "Business District",
+        "network_context": "Commercial 5G",
+        "risk_assessment": "Monitor"
+      },
+      {
+        "scenario": "LC-09",
+        "location_type": "Hotel 5G Network",
+        "trust_score": 0.75,
+        "description": "Business hotel 5G service",
+        "geographic_zone": "Hospitality",
+        "network_context": "Hotel Network",
+        "risk_assessment": "Monitor"
+      },
+      {
+        "scenario": "LC-10",
+        "location_type": "Airport 5G Hub",
+        "trust_score": 0.70,
+        "description": "Transportation hub 5G service",
+        "geographic_zone": "Transit Hub",
+        "network_context": "Public 5G",
+        "risk_assessment": "Monitor"
+      },
+      {
+        "scenario": "LC-11",
+        "location_type": "Roaming 5G Network",
+        "trust_score": 0.65,
+        "description": "5G roaming partner network",
+        "geographic_zone": "Roaming Zone",
+        "network_context": "Roaming 5G",
+        "risk_assessment": "Review"
+      },
+      {
+        "scenario": "LC-12",
+        "location_type": "Public WiFi Fallback",
+        "trust_score": 0.60,
+        "description": "WiFi when 5G unavailable",
+        "geographic_zone": "Public Space",
+        "network_context": "Public WiFi",
+        "risk_assessment": "Review"
+      },
+      {
+        "scenario": "LC-13",
+        "location_type": "International 5G",
+        "trust_score": 0.55,
+        "description": "International 5G roaming",
+        "geographic_zone": "Foreign Country",
+        "network_context": "Int'l Roaming",
+        "risk_assessment": "Review"
+      },
+      {
+        "scenario": "LC-14",
+        "location_type": "Unknown 5G Network",
+        "trust_score": 0.45,
+        "description": "Unrecognized 5G network",
+        "geographic_zone": "Unknown Zone",
+        "network_context": "Unknown 5G",
+        "risk_assessment": "Alert"
+      },
+      {
+        "scenario": "LC-15",
+        "location_type": "High-Risk Region",
+        "trust_score": 0.30,
+        "description": "Geopolitically sensitive area",
+        "geographic_zone": "High-Risk Zone",
+        "network_context": "Restricted",
+        "risk_assessment": "High Risk"
+      },
+      {
+        "scenario": "LC-16",
+        "location_type": "Sanctioned Location",
+        "trust_score": 0.15,
+        "description": "Location under sanctions",
+        "geographic_zone": "Sanctioned Zone",
+        "network_context": "Blocked",
+        "risk_assessment": "Critical Risk"
+      },
+      {
+        "scenario": "LC-17",
+        "location_type": "VPN/Proxy Hidden",
+        "trust_score": 0.10,
+        "description": "Location hidden via VPN/proxy",
+        "geographic_zone": "Masked Location",
+        "network_context": "Anonymous",
+        "risk_assessment": "Block"
+      }
+    ]
+  },
+  "device_health": {
+    "weight": 0.05,
+    "scenarios": [
+      {
+        "scenario": "DH-01",
+        "health_status": "Optimal Performance",
+        "trust_score": 1.00,
+        "description": "All systems operating optimally",
+        "cpu_memory": "< 50% Usage",
+        "storage": "> 20% Free",
+        "thermal": "Normal"
+      },
+      {
+        "scenario": "DH-02",
+        "health_status": "Container Healthy",
+        "trust_score": 0.98,
+        "description": "Container health checks passing",
+        "cpu_memory": "Healthy Pods",
+        "storage": "Storage OK",
+        "thermal": "Cool"
+      },
+      {
+        "scenario": "DH-03",
+        "health_status": "5G Modem Optimal",
+        "trust_score": 0.96,
+        "description": "5G modem operating efficiently",
+        "cpu_memory": "Low Power",
+        "storage": "Good Signal",
+        "thermal": "Normal"
+      },
+      {
+        "scenario": "DH-04",
+        "health_status": "Edge Node Healthy",
+        "trust_score": 0.94,
+        "description": "Edge computing node healthy",
+        "cpu_memory": "Balanced Load",
+        "storage": "Storage Good",
+        "thermal": "Optimal"
+      },
+      {
+        "scenario": "DH-05",
+        "health_status": "Normal Operations",
+        "trust_score": 0.92,
+        "description": "Standard operational parameters",
+        "cpu_memory": "< 70% Usage",
+        "storage": "> 15% Free",
+        "thermal": "Normal"
+      },
+      {
+        "scenario": "DH-06",
+        "health_status": "Moderate Load",
+        "trust_score": 0.88,
+        "description": "Elevated but acceptable load",
+        "cpu_memory": "< 80% Usage",
+        "storage": "> 10% Free",
+        "thermal": "Warm"
+      },
+      {
+        "scenario": "DH-07",
+        "health_status": "High Utilization",
+        "trust_score": 0.82,
+        "description": "High but sustainable utilization",
+        "cpu_memory": "< 90% Usage",
+        "storage": "> 5% Free",
+        "thermal": "Warm"
+      },
+      {
+        "scenario": "DH-08",
+        "health_status": "Memory Pressure",
+        "trust_score": 0.78,
+        "description": "Memory usage approaching limits",
+        "cpu_memory": "High Memory",
+        "storage": "Storage OK",
+        "thermal": "Normal"
+      },
+      {
+        "scenario": "DH-09",
+        "health_status": "Storage Warning",
+        "trust_score": 0.75,
+        "description": "Storage space running low",
+        "cpu_memory": "Normal CPU",
+        "storage": "< 5% Free",
+        "thermal": "Normal"
+      },
+      {
+        "scenario": "DH-10",
+        "health_status": "Thermal Warning",
+        "trust_score": 0.70,
+        "description": "Device running hot",
+        "cpu_memory": "Normal Load",
+        "storage": "Storage OK",
+        "thermal": "Hot"
+      },
+      {
+        "scenario": "DH-11",
+        "health_status": "5G Signal Degraded",
+        "trust_score": 0.65,
+        "description": "Poor 5G signal quality",
+        "cpu_memory": "Normal Load",
+        "storage": "Storage OK",
+        "thermal": "Normal"
+      },
+      {
+        "scenario": "DH-12",
+        "health_status": "Battery Low",
+        "trust_score": 0.60,
+        "description": "Mobile device battery critical",
+        "cpu_memory": "Normal Load",
+        "storage": "Storage OK",
+        "thermal": "Normal"
+      },
+      {
+        "scenario": "DH-13",
+        "health_status": "Performance Degraded",
+        "trust_score": 0.50,
+        "description": "Significant performance issues",
+        "cpu_memory": "> 95% Usage",
+        "storage": "Low Storage",
+        "thermal": "Hot"
+      },
+      {
+        "scenario": "DH-14",
+        "health_status": "Hardware Warnings",
+        "trust_score": 0.40,
+        "description": "Hardware health alerts",
+        "cpu_memory": "Unstable",
+        "storage": "Failing Storage",
+        "thermal": "Overheating"
+      },
+      {
+        "scenario": "DH-15",
+        "health_status": "System Instability",
+        "trust_score": 0.25,
+        "description": "Frequent crashes/reboots",
+        "cpu_memory": "Critical Load",
+        "storage": "Disk Errors",
+        "thermal": "Critical Temp"
+      },
+      {
+        "scenario": "DH-16",
+        "health_status": "Hardware Failure",
+        "trust_score": 0.10,
+        "description": "Hardware components failing",
+        "cpu_memory": "System Errors",
+        "storage": "Failed Drives",
+        "thermal": "Shutdown Risk"
+      }
+    ]
+  },
+  "managed_device_status": {
+    "weight": 0.11,
+    "scenarios": [
+      {
+        "scenario": "MDS-01",
+        "management_level": "Full 5G MDM Control",
+        "trust_score": 1.00,
+        "description": "Complete 5G-aware MDM management",
+        "mdm_status": "Full Control",
+        "policy_compliance": "100% Compliant",
+        "control_level": "Maximum"
+      },
+      {
+        "scenario": "MDS-02",
+        "management_level": "Container Orchestrated",
+        "trust_score": 0.98,
+        "description": "Kubernetes/container orchestration",
+        "mdm_status": "Orchestrated",
+        "policy_compliance": "Policy Enforced",
+        "control_level": "Maximum"
+      },
+      {
+        "scenario": "MDS-03",
+        "management_level": "Cloud Native Managed",
+        "trust_score": 0.96,
+        "description": "Cloud-native management platform",
+        "mdm_status": "Cloud Managed",
+        "policy_compliance": "Auto-Compliant",
+        "control_level": "High"
+      },
+      {
+        "scenario": "MDS-04",
+        "management_level": "Enterprise MDM",
+        "trust_score": 0.94,
+        "description": "Traditional enterprise MDM",
+        "mdm_status": "Full MDM",
+        "policy_compliance": "Compliant",
+        "control_level": "High"
+      },
+      {
+        "scenario": "MDS-05",
+        "management_level": "5G Device Management",
+        "trust_score": 0.92,
+        "description": "5G-specific device management",
+        "mdm_status": "5G MDM",
+        "policy_compliance": "5G Policies",
+        "control_level": "High"
+      },
+      {
+        "scenario": "MDS-06",
+        "management_level": "Hybrid Management",
+        "trust_score": 0.88,
+        "description": "Mixed cloud/on-premise management",
+        "mdm_status": "Hybrid Control",
+        "policy_compliance": "Mixed Policies",
+        "control_level": "Standard"
+      },
+      {
+        "scenario": "MDS-07",
+        "management_level": "BYOD Enrolled",
+        "trust_score": 0.85,
+        "description": "Personal device enrolled in MDM",
+        "mdm_status": "BYOD MDM",
+        "policy_compliance": "BYOD Policies",
+        "control_level": "Standard"
+      },
+      {
+        "scenario": "MDS-08",
+        "management_level": "Certificate Managed",
+        "trust_score": 0.82,
+        "description": "Certificate-based management",
+        "mdm_status": "Cert Control",
+        "policy_compliance": "Cert Policies",
+        "control_level": "Acceptable"
+      },
+      {
+        "scenario": "MDS-09",
+        "management_level": "Group Policy Only",
+        "trust_score": 0.78,
+        "description": "Windows Group Policy management",
+        "mdm_status": "GP Control",
+        "policy_compliance": "Basic Policies",
+        "control_level": "Acceptable"
+      },
+      {
+        "scenario": "MDS-10",
+        "management_level": "Basic Configuration",
+        "trust_score": 0.75,
+        "description": "Minimal configuration management",
+        "mdm_status": "Basic Config",
+        "policy_compliance": "Limited Policy",
+        "control_level": "Monitor"
+      },
+      {
+        "scenario": "MDS-11",
+        "management_level": "Self-Managed",
+        "trust_score": 0.70,
+        "description": "User-managed with guidelines",
+        "mdm_status": "Self Control",
+        "policy_compliance": "User Policies",
+        "control_level": "Monitor"
+      },
+      {
+        "scenario": "MDS-12",
+        "management_level": "Partially Managed",
+        "trust_score": 0.65,
+        "description": "Some management controls",
+        "mdm_status": "Partial MDM",
+        "policy_compliance": "Partial Policy",
+        "control_level": "Review"
+      },
+      {
+        "scenario": "MDS-13",
+        "management_level": "Legacy Management",
+        "trust_score": 0.60,
+        "description": "Outdated management system",
+        "mdm_status": "Legacy MDM",
+        "policy_compliance": "Old Policies",
+        "control_level": "Review"
+      },
+      {
+        "scenario": "MDS-14",
+        "management_level": "Management Expired",
+        "trust_score": 0.45,
+        "description": "Expired management enrollment",
+        "mdm_status": "Expired MDM",
+        "policy_compliance": "No Enforcement",
+        "control_level": "Alert"
+      },
+      {
+        "scenario": "MDS-15",
+        "management_level": "Unmanaged Device",
+        "trust_score": 0.30,
+        "description": "No management controls",
+        "mdm_status": "No MDM",
+        "policy_compliance": "No Policies",
+        "control_level": "High Risk"
+      },
+      {
+        "scenario": "MDS-16",
+        "management_level": "Rogue Device",
+        "trust_score": 0.15,
+        "description": "Device bypassing management",
+        "mdm_status": "Rogue",
+        "policy_compliance": "Policy Violation",
+        "control_level": "Critical"
+      },
+      {
+        "scenario": "MDS-17",
+        "management_level": "Compromised Management",
+        "trust_score": 0.05,
+        "description": "Management system compromised",
+        "mdm_status": "Compromised",
+        "policy_compliance": "Malicious Policy",
+        "control_level": "Block"
+      }
+    ]
+  },
+  "authentication_factors": {
+    "weight": 0.09,
+    "scenarios": [
+      {
+        "scenario": "AF-01",
+        "auth_method": "Biometric + Hardware + PIN",
+        "trust_score": 1.00,
+        "description": "Three-factor with biometric",
+        "factor_count": "3+ Factors",
+        "biometric": "Yes",
+        "hardware_token": "Hardware"
+      },
+      {
+        "scenario": "AF-02",
+        "auth_method": "5G SIM + Biometric",
+        "trust_score": 0.98,
+        "description": "5G SIM card with biometric",
+        "factor_count": "2 Factors",
+        "biometric": "Yes",
+        "hardware_token": "5G SIM"
+      },
+      {
+        "scenario": "AF-03",
+        "auth_method": "Hardware Token + PIN",
+        "trust_score": 0.96,
+        "description": "Hardware security key with PIN",
+        "factor_count": "2 Factors",
+        "biometric": "No",
+        "hardware_token": "Hardware"
+      },
+      {
+        "scenario": "AF-04",
+        "auth_method": "Smart Card + PIN",
+        "trust_score": 0.94,
+        "description": "PKI smart card authentication",
+        "factor_count": "2 Factors",
+        "biometric": "No",
+        "hardware_token": "Smart Card"
+      },
+      {
+        "scenario": "AF-05",
+        "auth_method": "Certificate + Biometric",
+        "trust_score": 0.92,
+        "description": "Client certificate with biometric",
+        "factor_count": "2 Factors",
+        "biometric": "Yes",
+        "hardware_token": "Certificate"
+      },
+      {
+        "scenario": "AF-06",
+        "auth_method": "TOTP + Password",
+        "trust_score": 0.88,
+        "description": "Time-based OTP with password",
+        "factor_count": "2 Factors",
+        "biometric": "No",
+        "hardware_token": "Software"
+      },
+      {
+        "scenario": "AF-07",
+        "auth_method": "SMS + Password",
+        "trust_score": 0.85,
+        "description": "SMS OTP with password",
+        "factor_count": "2 Factors",
+        "biometric": "No",
+        "hardware_token": "SMS"
+      },
+      {
+        "scenario": "AF-08",
+        "auth_method": "Push Notification Auth",
+        "trust_score": 0.82,
+        "description": "Mobile app push authentication",
+        "factor_count": "2 Factors",
+        "biometric": "No",
+        "hardware_token": "Mobile App"
+      },
+      {
+        "scenario": "AF-09",
+        "auth_method": "Certificate Only",
+        "trust_score": 0.80,
+        "description": "Client certificate authentication",
+        "factor_count": "1 Factor",
+        "biometric": "No",
+        "hardware_token": "Certificate"
+      },
+      {
+        "scenario": "AF-10",
+        "auth_method": "Biometric Only",
+        "trust_score": 0.78,
+        "description": "Single biometric factor",
+        "factor_count": "1 Factor",
+        "biometric": "Yes",
+        "hardware_token": "None"
+      },
+      {
+        "scenario": "AF-11",
+        "auth_method": "Complex Password",
+        "trust_score": 0.75,
+        "description": "Strong password requirements",
+        "factor_count": "1 Factor",
+        "biometric": "No",
+        "hardware_token": "None"
+      },
+      {
+        "scenario": "AF-12",
+        "auth_method": "Standard Password",
+        "trust_score": 0.70,
+        "description": "Basic password authentication",
+        "factor_count": "1 Factor",
+        "biometric": "No",
+        "hardware_token": "None"
+      },
+      {
+        "scenario": "AF-13",
+        "auth_method": "API Key Auth",
+        "trust_score": 0.65,
+        "description": "API key-based authentication",
+        "factor_count": "1 Factor",
+        "biometric": "No",
+        "hardware_token": "API Key"
+      },
+      {
+        "scenario": "AF-14",
+        "auth_method": "Shared Secret",
+        "trust_score": 0.60,
+        "description": "Pre-shared key authentication",
+        "factor_count": "1 Factor",
+        "biometric": "No",
+        "hardware_token": "Shared Key"
+      },
+      {
+        "scenario": "AF-15",
+        "auth_method": "Weak Password",
+        "trust_score": 0.45,
+        "description": "Weak or default password",
+        "factor_count": "1 Factor",
+        "biometric": "No",
+        "hardware_token": "None"
+      },
+      {
+        "scenario": "AF-16",
+        "auth_method": "No Authentication",
+        "trust_score": 0.30,
+        "description": "Open access, no authentication",
+        "factor_count": "0 Factors",
+        "biometric": "No",
+        "hardware_token": "None"
+      },
+      {
+        "scenario": "AF-17",
+        "auth_method": "Compromised Credentials",
+        "trust_score": 0.10,
+        "description": "Known compromised authentication",
+        "factor_count": "Compromised",
+        "biometric": "Unknown",
+        "hardware_token": "Compromised"
+      }
+    ]
+  },
+  "service_usage_pattern": {
+    "weight": 0.08,
+    "scenarios": [
+      {
+        "scenario": "SUP-01",
+        "usage_pattern": "Microservice Normal",
+        "trust_score": 1.00,
+        "description": "Standard microservice interactions",
+        "service_access": "Expected APIs",
+        "pattern_type": "Normal Pattern",
+        "risk_level": "Low"
+      },
+      {
+        "scenario": "SUP-02",
+        "usage_pattern": "Container Orchestration",
+        "trust_score": 0.98,
+        "description": "Kubernetes service communications",
+        "service_access": "K8s APIs",
+        "pattern_type": "Orchestrated",
+        "risk_level": "Low"
+      },
+      {
+        "scenario": "SUP-03",
+        "usage_pattern": "5G Edge Services",
+        "trust_score": 0.96,
+        "description": "Edge computing service usage",
+        "service_access": "Edge APIs",
+        "pattern_type": "Edge Pattern",
+        "risk_level": "Low"
+      },
+      {
+        "scenario": "SUP-04",
+        "usage_pattern": "Cloud Native Standard",
+        "trust_score": 0.94,
+        "description": "Cloud-native service patterns",
+        "service_access": "Cloud APIs",
+        "pattern_type": "Cloud Pattern",
+        "risk_level": "Low"
+      },
+      {
+        "scenario": "SUP-05",
+        "usage_pattern": "API Gateway Normal",
+        "trust_score": 0.92,
+        "description": "Standard API gateway usage",
+        "service_access": "Gateway APIs",
+        "pattern_type": "Controlled",
+        "risk_level": "Low"
+      },
+      {
+        "scenario": "SUP-06",
+        "usage_pattern": "Batch Processing",
+        "trust_score": 0.88,
+        "description": "Scheduled batch service usage",
+        "service_access": "Batch APIs",
+        "pattern_type": "Scheduled",
+        "risk_level": "Acceptable"
+      },
+      {
+        "scenario": "SUP-07",
+        "usage_pattern": "Service Mesh Comm",
+        "trust_score": 0.85,
+        "description": "Service mesh communications",
+        "service_access": "Mesh APIs",
+        "pattern_type": "Mesh Pattern",
+        "risk_level": "Acceptable"
+      },
+      {
+        "scenario": "SUP-08",
+        "usage_pattern": "Mobile App Services",
+        "trust_score": 0.82,
+        "description": "Mobile application service calls",
+        "service_access": "Mobile APIs",
+        "pattern_type": "Mobile Pattern",
+        "risk_level": "Acceptable"
+      },
+      {
+        "scenario": "SUP-09",
+        "usage_pattern": "Development Testing",
+        "trust_score": 0.80,
+        "description": "Development/testing service usage",
+        "service_access": "Test APIs",
+        "pattern_type": "Dev Pattern",
+        "risk_level": "Monitor"
+      },
+      {
+        "scenario": "SUP-10",
+        "usage_pattern": "Administrative Tasks",
+        "trust_score": 0.78,
+        "description": "Admin service operations",
+        "service_access": "Admin APIs",
+        "pattern_type": "Admin Pattern",
+        "risk_level": "Monitor"
+      },
+      {
+        "scenario": "SUP-11",
+        "usage_pattern": "High Frequency Usage",
+        "trust_score": 0.75,
+        "description": "Above-normal service usage",
+        "service_access": "High Volume",
+        "pattern_type": "Intensive",
+        "risk_level": "Monitor"
+      },
+      {
+        "scenario": "SUP-12",
+        "usage_pattern": "Cross-Service Calls",
+        "trust_score": 0.70,
+        "description": "Unusual cross-service access",
+        "service_access": "Multiple APIs",
+        "pattern_type": "Cross-Service",
+        "risk_level": "Review"
+      },
+      {
+        "scenario": "SUP-13",
+        "usage_pattern": "Unknown Services",
+        "trust_score": 0.65,
+        "description": "Access to unfamiliar services",
+        "service_access": "Unknown APIs",
+        "pattern_type": "New Pattern",
+        "risk_level": "Review"
+      },
+      {
+        "scenario": "SUP-14",
+        "usage_pattern": "Off-Hours Usage",
+        "trust_score": 0.60,
+        "description": "Service usage during off-hours",
+        "service_access": "Any APIs",
+        "pattern_type": "Unusual Time",
+        "risk_level": "Review"
+      },
+      {
+        "scenario": "SUP-15",
+        "usage_pattern": "Excessive Error Rates",
+        "trust_score": 0.45,
+        "description": "High service error rates",
+        "service_access": "Failed APIs",
+        "pattern_type": "Error Pattern",
+        "risk_level": "Alert"
+      },
+      {
+        "scenario": "SUP-16",
+        "usage_pattern": "Privilege Escalation",
+        "trust_score": 0.30,
+        "description": "Attempts to escalate privileges",
+        "service_access": "Elevated APIs",
+        "pattern_type": "Escalation",
+        "risk_level": "Block"
+      },
+      {
+        "scenario": "SUP-17",
+        "usage_pattern": "Data Exfiltration",
+        "trust_score": 0.15,
+        "description": "Suspicious data access patterns",
+        "service_access": "Data APIs",
+        "pattern_type": "Exfiltration",
+        "risk_level": "Block"
+      },
+      {
+        "scenario": "SUP-18",
+        "usage_pattern": "Attack Patterns",
+        "trust_score": 0.05,
+        "description": "Malicious service usage",
+        "service_access": "Attack APIs",
+        "pattern_type": "Malicious",
+        "risk_level": "Block"
+      }
+    ]
+  },
+      "user_usage_pattern": {
+    "weight": 0.06,
+    "scenarios": [
+      {
+        "scenario": "UUP-01",
+        "user_behavior": "Normal Business User",
+        "trust_score": 1.00,
+        "description": "Standard business hour usage",
+        "activity_pattern": "Regular Activity",
+        "time_pattern": "Business Hours",
+        "risk_indicator": "None"
+      },
+      {
+        "scenario": "UUP-02",
+        "user_behavior": "Cloud Developer",
+        "trust_score": 0.98,
+        "description": "Cloud-native development patterns",
+        "activity_pattern": "Development",
+        "time_pattern": "Extended Hours",
+        "risk_indicator": "None"
+      },
+      {
+        "scenario": "UUP-03",
+        "user_behavior": "Container Admin",
+        "trust_score": 0.96,
+        "description": "Container administration patterns",
+        "activity_pattern": "Admin Tasks",
+        "time_pattern": "Variable Hours",
+        "risk_indicator": "None"
+      },
+      {
+        "scenario": "UUP-04",
+        "user_behavior": "5G Operations",
+        "trust_score": 0.94,
+        "description": "5G network operations patterns",
+        "activity_pattern": "Operations",
+        "time_pattern": "24/7 Coverage",
+        "risk_indicator": "None"
+      },
+      {
+        "scenario": "UUP-05",
+        "user_behavior": "Remote Worker",
+        "trust_score": 0.92,
+        "description": "Consistent remote work patterns",
+        "activity_pattern": "Remote Access",
+        "time_pattern": "Standard Hours",
+        "risk_indicator": "None"
+      },
+      {
+        "scenario": "UUP-06",
+        "user_behavior": "Mobile Professional",
+        "trust_score": 0.88,
+        "description": "Mobile-first usage patterns",
+        "activity_pattern": "Mobile Heavy",
+        "time_pattern": "Travel Schedule",
+        "risk_indicator": "None"
+      },
+      {
+        "scenario": "UUP-07",
+        "user_behavior": "Shift Worker",
+        "trust_score": 0.85,
+        "description": "Consistent shift-based patterns",
+        "activity_pattern": "Shift Pattern",
+        "time_pattern": "Off-Hours",
+        "risk_indicator": "Acceptable"
+      },
+      {
+        "scenario": "UUP-08",
+        "user_behavior": "International User",
+        "trust_score": 0.82,
+        "description": "Cross-timezone usage patterns",
+        "activity_pattern": "Global Access",
+        "time_pattern": "Multiple Zones",
+        "risk_indicator": "Acceptable"
+      },
+      {
+        "scenario": "UUP-09",
+        "user_behavior": "Project Intensive",
+        "trust_score": 0.80,
+        "description": "Project-driven intensive usage",
+        "activity_pattern": "High Activity",
+        "time_pattern": "Extended Hours",
+        "risk_indicator": "Monitor"
+      },
+      {
+        "scenario": "UUP-10",
+        "user_behavior": "Occasional User",
+        "trust_score": 0.78,
+        "description": "Infrequent but consistent usage",
+        "activity_pattern": "Low Activity",
+        "time_pattern": "Irregular Hours",
+        "risk_indicator": "Monitor"
+      },
+      {
+        "scenario": "UUP-11",
+        "user_behavior": "New User Pattern",
+        "trust_score": 0.75,
+        "description": "New user establishing patterns",
+        "activity_pattern": "Learning Curve",
+        "time_pattern": "Irregular",
+        "risk_indicator": "Monitor"
+      },
+      {
+        "scenario": "UUP-12",
+        "user_behavior": "Changed Behavior",
+        "trust_score": 0.70,
+        "description": "Significant behavior changes",
+        "activity_pattern": "Pattern Shift",
+        "time_pattern": "Time Change",
+        "risk_indicator": "Review"
+      },
+      {
+        "scenario": "UUP-13",
+        "user_behavior": "Excessive Activity",
+        "trust_score": 0.65,
+        "description": "Above-normal activity levels",
+        "activity_pattern": "High Volume",
+        "time_pattern": "Extended Time",
+        "risk_indicator": "Review"
+      },
+      {
+        "scenario": "UUP-14",
+        "user_behavior": "Suspicious Hours",
+        "trust_score": 0.60,
+        "description": "Access during suspicious hours",
+        "activity_pattern": "Off-Hours",
+        "time_pattern": "Night/Weekend",
+        "risk_indicator": "Review"
+      },
+      {
+        "scenario": "UUP-15",
+        "user_behavior": "Multiple Devices",
+        "trust_score": 0.55,
+        "description": "Same user across many devices",
+        "activity_pattern": "Multi-Device",
+        "time_pattern": "Distributed",
+        "risk_indicator": "Alert"
+      },
+      {
+        "scenario": "UUP-16",
+        "user_behavior": "Rapid Location Changes",
+        "trust_score": 0.45,
+        "description": "Impossible travel patterns",
+        "activity_pattern": "Location Jump",
+        "time_pattern": "Geographic",
+        "risk_indicator": "Alert"
+      },
+      {
+        "scenario": "UUP-17",
+        "user_behavior": "Automated Behavior",
+        "trust_score": 0.30,
+        "description": "Bot-like usage patterns",
+        "activity_pattern": "Automated",
+        "time_pattern": "Scripted",
+        "risk_indicator": "Block"
+      },
+      {
+        "scenario": "UUP-18",
+        "user_behavior": "Account Takeover",
+        "trust_score": 0.15,
+        "description": "Evidence of account compromise",
+        "activity_pattern": "Compromised",
+        "time_pattern": "Hijacked",
+        "risk_indicator": "Block"
+      },
+      {
+        "scenario": "UUP-19",
+        "user_behavior": "Malicious Activity",
+        "trust_score": 0.05,
+        "description": "Confirmed malicious user behavior",
+        "activity_pattern": "Malicious",
+        "time_pattern": "Attack Pattern",
+        "risk_indicator": "Block"
+      }
+    ]
+  }
+    }
+  }
+}
